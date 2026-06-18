@@ -88,51 +88,80 @@ const ALL_SERVICES = [
   { id: 52, category: 'Maintenance',       name: 'Braids Remove',                   description: 'Professional and careful removal of existing braids, protecting your natural hair.',                  price: '$50+',         deposit: '$10' },
 ];
 
+const U = (id, w = 600) => `https://images.unsplash.com/photo-${id}?w=${w}&q=80&auto=format&fit=crop`;
+
+const SERVICE_IMAGES = {
+  knotless:    U('1589156280159-27698a70f29e'),
+  knotBoho:    U('1526510747491-58f928ec870f'),
+  knotLong:    U('1602233158242-3ba0ac4d2167'),
+  knotSmall:   U('1526510747491-58f928ec870f'),
+  knotHuman:   U('1492106087820-71f1a00d2b11'),
+  box:         U('1531746020798-e6953c6e8e04'),
+  boxMale:     U('1589156280159-27698a70f29e'),
+  boxFancy:    U('1549236177-f9b0031756eb'),
+  cornrow:     U('1611432579699-484f7990b127'),
+  cornStitch:  U('1595152772835-219674b2a8a6'),
+  cornNatural: U('1531746020798-e6953c6e8e04'),
+  twistPassion:U('1596178065887-1198b6148b2b'),
+  twistSenegal:U('1534528741775-53994a69daeb'),
+  twistKinky:  U('1583001308347-c5162515b50c'),
+  twistDefault:U('1544005313-94ddf0286df2'),
+  crochet:     U('1617791160536-598cf32026fb'),
+  locsGoddess: U('1524504388940-b1c1722653e1'),
+  locsButter:  U('1524504388940-b1c1722653e1'),
+  locsFaux:    U('1611432579699-484f7990b127'),
+  locsDefault: U('1617791160536-598cf32026fb'),
+  kidsDefault: U('1594744803329-e58b31de8bf5'),
+  kidsCornrow: U('1559599101-f09722fb4948'),
+  tribal:      U('1595152772835-219674b2a8a6'),
+  fallback:    U('1589156280159-27698a70f29e'),
+};
+
 const getServiceImage = (category, name) => {
   const cat = category.toLowerCase();
   const nm = name.toLowerCase();
   if (cat.includes('knotless')) {
-    if (nm.includes('boho')) return '/assets/h4.jpg';
-    if (nm.includes('long')) return '/assets/h7.jpg';
-    if (nm.includes('small')) return '/assets/h19.jpg';
-    if (nm.includes('human')) return '/assets/h9.jpg';
-    return '/assets/h1.jpg';
+    if (nm.includes('boho')) return SERVICE_IMAGES.knotBoho;
+    if (nm.includes('long')) return SERVICE_IMAGES.knotLong;
+    if (nm.includes('small')) return SERVICE_IMAGES.knotSmall;
+    if (nm.includes('human')) return SERVICE_IMAGES.knotHuman;
+    return SERVICE_IMAGES.knotless;
   }
   if (cat.includes('box')) {
-    if (nm.includes('male')) return '/assets/h2.jpg';
-    if (nm.includes('fancy')) return '/assets/h14.jpg';
-    return '/assets/h26.jpg';
+    if (nm.includes('male')) return SERVICE_IMAGES.boxMale;
+    if (nm.includes('fancy')) return SERVICE_IMAGES.boxFancy;
+    return SERVICE_IMAGES.box;
   }
   if (cat.includes('cornrow') || cat.includes('stitch')) {
-    if (nm.includes('stitch')) return '/assets/h11.jpg';
-    if (nm.includes('natural')) return '/assets/h3.jpg';
-    return '/assets/h27.jpg';
+    if (nm.includes('stitch')) return SERVICE_IMAGES.cornStitch;
+    if (nm.includes('natural')) return SERVICE_IMAGES.cornNatural;
+    return SERVICE_IMAGES.cornrow;
   }
   if (cat.includes('twist')) {
-    if (nm.includes('passion')) return '/assets/h5.jpg';
-    if (nm.includes('senegalese')) return '/assets/h10.jpg';
-    if (nm.includes('kinky')) return '/assets/h16.jpg';
-    return '/assets/h24.jpg';
+    if (nm.includes('passion')) return SERVICE_IMAGES.twistPassion;
+    if (nm.includes('senegalese')) return SERVICE_IMAGES.twistSenegal;
+    if (nm.includes('kinky')) return SERVICE_IMAGES.twistKinky;
+    return SERVICE_IMAGES.twistDefault;
   }
   if (cat.includes('crochet')) {
-    return '/assets/h12.jpg';
+    return SERVICE_IMAGES.crochet;
   }
   if (cat.includes('dreadlock') || cat.includes('locs') || cat.includes('wick')) {
     if (nm.includes('faux') || nm.includes('butterfly') || nm.includes('goddess')) {
-      if (nm.includes('goddess')) return '/assets/h13.jpg';
-      if (nm.includes('butterfly')) return '/assets/h18.jpg';
-      return '/assets/h6.jpg';
+      if (nm.includes('goddess')) return SERVICE_IMAGES.locsGoddess;
+      if (nm.includes('butterfly')) return SERVICE_IMAGES.locsButter;
+      return SERVICE_IMAGES.locsFaux;
     }
-    return '/assets/h25.jpg';
+    return SERVICE_IMAGES.locsDefault;
   }
   if (cat.includes('kids')) {
-    if (nm.includes('cornrow')) return '/assets/h22.jpg';
-    return '/assets/h8.jpg';
+    if (nm.includes('cornrow')) return SERVICE_IMAGES.kidsCornrow;
+    return SERVICE_IMAGES.kidsDefault;
   }
   if (cat.includes('lemonade') || cat.includes('tribal')) {
-    return '/assets/h15.jpg';
+    return SERVICE_IMAGES.tribal;
   }
-  return '/assets/h1.jpg'; // fallback
+  return SERVICE_IMAGES.fallback;
 };
 
 export default function Services() {

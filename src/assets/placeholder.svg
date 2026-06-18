@@ -31,7 +31,7 @@
   <circle cx="100" cy="500" r="3" fill="#d4b8f0" opacity="0.5"/>
   <circle cx="480" cy="600" r="2" fill="#f4a7c3" opacity="0.4"/>
   <!-- Salon name -->
-  <text x="300" y="520" text-anchor="middle" font-family="Georgia,serif" font-size="22" font-weight="bold" fill="#f4a7c3" opacity="0.9">Wido's Hair Salon</text>
+  <text x="300" y="520" text-anchor="middle" font-family="Georgia,serif" font-size="22" font-weight="bold" fill="#f4a7c3" opacity="0.9">Oumi's Hair Salon</text>
   <text x="300" y="550" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" fill="#9d8fb5" letter-spacing="3">HAMDEN · CT</text>
   <!-- Bottom gradient bar -->
   <rect x="150" y="580" width="300" height="2" fill="url(#accent)" rx="1" opacity="0.6"/>
