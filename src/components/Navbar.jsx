@@ -1,190 +1,119 @@
-import React, { useState, useEffect } from 'react';
-import { Menu, X, Phone, Sparkles } from 'lucide-react';
+import { useState, useEffect, useRef } from 'react';
+import { Link, NavLink, useLocation } from 'react-router-dom';
+import { FaBars, FaTimes, FaPhone } from 'react-icons/fa';
+import { logoImg } from '../images';
+import './Navbar.css';
 
-export default function Navbar({ onBookOpen }) {
-  const [isOpen, setIsOpen] = useState(false);
+const NAV_LINKS = [
+  { to: '/',        label: 'Home' },
+  { to: '/about',   label: 'About' },
+  { to: '/services',label: 'Services' },
+  { to: '/gallery', label: 'Gallery' },
+  { to: '/reviews', label: 'Reviews' },
+  { to: '/contact', label: 'Contact' },
+];
+
+export default function Navbar() {
+  const [open, setOpen]       = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const location              = useLocation();
+  const menuRef               = useRef(null);
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 20) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 30);
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  return (
-    <nav className={`nav ${scrolled ? 'nav-scrolled' : ''}`}>
-      <div className="container nav-container">
-        {/* Logo */}
-        <a href="#" className="nav-logo">
-          <span className="logo-sparkle"><Sparkles size={18} className="text-gradient-gold" /></span>
-          <span className="heading-sm">OUMI'S HAVEN</span>
-        </a>
+  // Close menu on route change
+  useEffect(() => { setOpen(false); }, [location]);
 
-        {/* Desktop Menu */}
-        <div className="nav-links-desktop">
-          <a href="#services" className="nav-link">Services</a>
-          <a href="#gallery" className="nav-link">Gallery</a>
-          <a href="#reviews" className="nav-link">Reviews</a>
-          <a href="#contact" className="nav-link">Contact</a>
-          <a href="tel:2037763381" className="nav-call">
-            <Phone size={14} /> 203.776.3381
+  // Close menu on outside click
+  useEffect(() => {
+    const handler = (e) => {
+      if (menuRef.current && !menuRef.current.contains(e.target)) setOpen(false);
+    };
+    if (open) document.addEventListener('mousedown', handler);
+    return () => document.removeEventListener('mousedown', handler);
+  }, [open]);
+
+  const isHome = location.pathname === '/';
+
+  return (
+    <header className={`navbar ${scrolled ? 'navbar--scrolled' : ''} ${isHome ? 'navbar--home' : ''}`} role="banner">
+      <div className="navbar__inner">
+        {/* Logo */}
+        <Link to="/" className="navbar__logo" aria-label="Oumi's Haven Hair Braiding Home">
+          <div className="navbar__logo-img-wrap">
+            <img src={logoImg} alt="Oumi's Haven Hair Braiding Logo" className="navbar__logo-img" />
+          </div>
+          <div className="navbar__logo-text">
+            <span className="navbar__logo-name">Oumi's</span>
+            <span className="navbar__logo-sub">Hair Salon</span>
+          </div>
+        </Link>
+
+        {/* Desktop Nav */}
+        <nav className="navbar__links" aria-label="Main navigation">
+          {NAV_LINKS.map(({ to, label }) => (
+            <NavLink
+              key={to}
+              to={to}
+              end={to === '/'}
+              className={({ isActive }) => `navbar__link ${isActive ? 'navbar__link--active' : ''}`}
+            >
+              {label}
+            </NavLink>
+          ))}
+        </nav>
+
+        {/* Desktop CTAs */}
+        <div className="navbar__ctas">
+          <a href="tel:+12036192413" className="navbar__phone" aria-label="Call us">
+            <FaPhone />
+            <span>Call</span>
           </a>
-          <button onClick={onBookOpen} className="btn btn-primary nav-btn" style={{ borderRadius: 'var(--radius-full)' }}>
-            Book Appointment
-          </button>
+          <a href="#book" className="btn btn-primary navbar__book-btn" id="navbar-book-btn">
+            Book Now
+          </a>
         </div>
 
-        {/* Mobile Toggle */}
-        <button className="nav-toggle" onClick={() => setIsOpen(!isOpen)} aria-label="Toggle navigation">
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
+        {/* Hamburger */}
+        <button
+          className="navbar__hamburger"
+          onClick={() => setOpen(!open)}
+          aria-label={open ? 'Close menu' : 'Open menu'}
+          aria-expanded={open}
+          id="mobile-menu-toggle"
+        >
+          {open ? <FaTimes /> : <FaBars />}
         </button>
       </div>
 
-      {/* Mobile Drawer Menu */}
-      <div className={`nav-menu-mobile ${isOpen ? 'open' : ''}`}>
-        <a href="#services" onClick={() => setIsOpen(false)} className="nav-link-mobile">Services</a>
-        <a href="#gallery" onClick={() => setIsOpen(false)} className="nav-link-mobile">Gallery</a>
-        <a href="#reviews" onClick={() => setIsOpen(false)} className="nav-link-mobile">Reviews</a>
-        <a href="#contact" onClick={() => setIsOpen(false)} className="nav-link-mobile">Contact</a>
-        <a href="tel:2037763381" className="nav-call-mobile">
-          <Phone size={16} color="var(--clr-rose)" /> 203.776.3381
-        </a>
-        <button onClick={() => { setIsOpen(false); onBookOpen(); }} className="btn btn-primary btn-mobile" style={{ borderRadius: 'var(--radius-full)' }}>
-          Book Appointment
-        </button>
+      {/* Mobile Drawer */}
+      <div className={`navbar__drawer ${open ? 'navbar__drawer--open' : ''}`} ref={menuRef} aria-hidden={!open}>
+        <nav aria-label="Mobile navigation">
+          {NAV_LINKS.map(({ to, label }) => (
+            <NavLink
+              key={to}
+              to={to}
+              end={to === '/'}
+              className={({ isActive }) => `navbar__drawer-link ${isActive ? 'navbar__drawer-link--active' : ''}`}
+            >
+              {label}
+            </NavLink>
+          ))}
+          <a href="#book" className="btn btn-primary navbar__drawer-book" id="mobile-book-btn">
+            Book Appointment
+          </a>
+          <a href="tel:+12036192413" className="navbar__drawer-phone">
+            <FaPhone /> 203-776-3381 / 203-407-0474
+          </a>
+        </nav>
       </div>
 
-      <style>{`
-        .nav {
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          z-index: 1000;
-          transition: all 0.3s ease;
-          border-bottom: 1px solid transparent;
-          background: transparent;
-        }
-        .nav-scrolled {
-          background: rgba(250, 248, 245, 0.95);
-          backdrop-filter: blur(12px);
-          -webkit-backdrop-filter: blur(12px);
-          border-bottom: 1px solid var(--clr-border);
-          box-shadow: var(--shadow-sm);
-        }
-        /* When not scrolled and on hero (which is dark), text is white. 
-           But since Wido uses warm ivory everywhere or dark hero, let's assume ivory background everywhere except hero. 
-           Wait, Hero is dark? Wido hero might be dark with glass card. Let's make navbar text dark always for simplicity unless we specifically style it. */
-        .nav-container {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          height: 80px;
-        }
-        .nav-logo {
-          display: flex;
-          align-items: center;
-          gap: 8px;
-          color: var(--clr-heading);
-        }
-        .logo-sparkle {
-          margin-bottom: 4px;
-        }
-        .nav-links-desktop {
-          display: flex;
-          align-items: center;
-          gap: 32px;
-        }
-        .nav-link {
-          font-size: 0.9rem;
-          font-weight: 500;
-          color: var(--clr-text);
-          position: relative;
-        }
-        .nav-link:hover, .nav-link:focus {
-          color: var(--clr-rose);
-        }
-        .nav-call {
-          display: flex;
-          align-items: center;
-          gap: 6px;
-          font-size: 0.9rem;
-          font-weight: 600;
-          color: var(--clr-text-muted);
-        }
-        .nav-call:hover {
-          color: var(--clr-rose);
-        }
-        .nav-btn {
-          padding: 10px 24px;
-          font-size: 0.85rem;
-          text-transform: none;
-        }
-        .nav-toggle {
-          display: none;
-          background: transparent;
-          border: none;
-          color: var(--clr-text);
-          cursor: pointer;
-        }
-        .nav-menu-mobile {
-          display: none;
-          position: absolute;
-          top: 80px;
-          left: 0;
-          width: 100%;
-          padding: 32px 24px;
-          flex-direction: column;
-          gap: 24px;
-          background: var(--clr-bg);
-          border-bottom: 1px solid var(--clr-border);
-          box-shadow: var(--shadow-sm);
-          transform: translateY(-150%);
-          transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .nav-menu-mobile.open {
-          transform: translateY(0);
-        }
-        .nav-link-mobile {
-          font-family: var(--font-heading);
-          font-size: 1.5rem;
-          font-weight: 600;
-          color: var(--clr-heading);
-          border-bottom: 1px solid var(--clr-border);
-          padding-bottom: 12px;
-        }
-        .nav-call-mobile {
-          display: flex;
-          align-items: center;
-          gap: 12px;
-          font-size: 1.1rem;
-          font-weight: 500;
-          color: var(--clr-text);
-        }
-        .btn-mobile {
-          width: 100%;
-          padding: 16px;
-          margin-top: 16px;
-        }
-
-        @media (max-width: 900px) {
-          .nav-links-desktop {
-            display: none;
-          }
-          .nav-toggle {
-            display: block;
-          }
-          .nav-menu-mobile {
-            display: flex;
-          }
-        }
-      `}</style>
-    </nav>
+      {/* Backdrop */}
+      {open && <div className="navbar__backdrop" onClick={() => setOpen(false)} aria-hidden="true" />}
+    </header>
   );
 }

@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Great+Vibes&display=swap');
 
 /* ============================================================
-   OUMI'S HAVEN HAIR BRAIDING – BOUTIQUE LUXURY DESIGN SYSTEM
+   WIDO'S HAIR SALON – REDESIGNED DESIGN SYSTEM
    Warm ivory + dusty rose + gold — boutique luxury salon feel
    ============================================================ */
 
@@ -383,13 +383,26 @@ input, textarea, select { font-family: var(--font-body); }
   opacity: 0;
   transform: translateY(36px);
   transition: opacity 0.7s ease, transform 0.7s ease;
-  animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(36px); }
-  to { opacity: 1; transform: translateY(0); }
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
+
+.fade-in {
+  opacity: 0;
+  transition: opacity 0.7s ease;
+}
+
+.fade-in.visible { opacity: 1; }
+
+.stagger-1 { transition-delay: 0.1s; }
+.stagger-2 { transition-delay: 0.2s; }
+.stagger-3 { transition-delay: 0.3s; }
+.stagger-4 { transition-delay: 0.4s; }
+.stagger-5 { transition-delay: 0.5s; }
+.stagger-6 { transition-delay: 0.6s; }
 
 /* ============================================================
    SCROLLBAR

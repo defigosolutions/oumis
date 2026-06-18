@@ -1,0 +1,80 @@
+/* ============================================================
+   GALLERY PAGE
+   ============================================================ */
+
+.gallery-page__hero {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg, var(--clr-bg-alt) 0%, var(--clr-bg) 100%);
+  border-bottom: 1px solid var(--clr-border);
+  padding-top: calc(var(--navbar-h) + var(--space-4xl));
+}
+
+.gallery-page__blob-1 { width: 400px; height: 400px; top: -80px; left: -150px; background: rgba(201,112,127,0.05); }
+.gallery-page__blob-2 { width: 350px; height: 350px; bottom: -80px; right: -100px; background: rgba(197,147,62,0.05); }
+
+/* Filter Bar */
+.gallery-page__filter-bar {
+  position: sticky;
+  top: var(--navbar-h);
+  z-index: 100;
+  background: rgba(255, 252, 249, 0.97);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--clr-border);
+  padding: var(--space-md) 0;
+  box-shadow: var(--shadow-xs);
+}
+
+.gallery-page__filters {
+  display: flex;
+  gap: var(--space-sm);
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding-bottom: 4px;
+}
+
+.gallery-page__filters::-webkit-scrollbar { display: none; }
+
+.gallery-page__filter-btn {
+  flex-shrink: 0;
+  padding: 0.5rem 1.2rem;
+  border-radius: var(--radius-full);
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--clr-text-muted);
+  background: #fff;
+  border: 1px solid var(--clr-border);
+  transition: all var(--trans-fast);
+  cursor: pointer;
+}
+
+.gallery-page__filter-btn:hover {
+  color: var(--clr-rose);
+  border-color: var(--clr-rose-light);
+  background: rgba(201, 112, 127, 0.05);
+}
+
+.gallery-page__filter-btn--active {
+  background: var(--grad-pink);
+  color: var(--clr-white);
+  border-color: transparent;
+  box-shadow: 0 4px 14px rgba(168, 52, 74, 0.3);
+}
+
+/* Count */
+.gallery-page__count {
+  font-size: 0.85rem;
+  color: var(--clr-text-muted);
+  margin-bottom: var(--space-xl);
+}
+
+.gallery-page__count strong {
+  color: var(--clr-rose);
+}
+
+/* CTA */
+.gallery-page__cta {
+  background: linear-gradient(180deg, var(--clr-bg) 0%, var(--clr-bg-alt) 100%);
+  border-top: 1px solid var(--clr-border);
+}

@@ -1,0 +1,132 @@
+/* ============================================================
+   SERVICE CARD – warm white card, boutique feel
+   ============================================================ */
+.service-card {
+  background: #fff;
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-xs);
+  transition: transform var(--trans-mid), box-shadow var(--trans-mid), border-color var(--trans-mid);
+  transition-delay: var(--delay, 0ms);
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--grad-pink);
+  opacity: 0;
+  transition: opacity var(--trans-mid);
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+  border-color: rgba(201, 112, 127, 0.2);
+}
+
+.service-card:hover::before { opacity: 1; }
+
+/* Category badge */
+.service-card__top { display: flex; align-items: center; }
+
+.service-card__cat-badge {
+  font-size: 0.67rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.28rem 0.8rem;
+  border-radius: var(--radius-full);
+}
+
+/* Title */
+.service-card__title {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--clr-heading);
+  line-height: 1.3;
+}
+
+/* Desc */
+.service-card__desc {
+  font-size: 0.83rem;
+  color: var(--clr-text-muted);
+  line-height: 1.65;
+  flex: 1;
+}
+
+/* Pricing */
+.service-card__pricing {
+  display: flex;
+  gap: var(--space-xl);
+  padding: var(--space-md) 0;
+  border-top: 1px solid var(--clr-border);
+  border-bottom: 1px solid var(--clr-border);
+}
+
+.service-card__price,
+.service-card__deposit {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.service-card__price-label {
+  font-size: 0.66rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--clr-text-light);
+}
+
+.service-card__price-value {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--clr-rose);
+}
+
+.service-card__deposit-value {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--clr-purple);
+}
+
+/* CTA */
+.service-card__cta {
+  width: 100%;
+  justify-content: center;
+  font-size: 0.85rem;
+  padding: 0.72rem;
+}
+
+.service-card__shine { display: none; }
+
+/* Service Card Image styling */
+.service-card__img-wrap {
+  position: relative;
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-xs);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.service-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--trans-mid);
+}
+
+.service-card:hover .service-card__img {
+  transform: scale(1.05);
+}
