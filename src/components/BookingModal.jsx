@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, Calendar, Clock, User, Phone, Mail, ChevronRight, CheckCircle } from 'lucide-react';
+import { X, Calendar, Clock, User, Phone, Mail, ChevronRight, CheckCircle2 } from 'lucide-react';
 
 const TIME_SLOTS = [
   '09:00 AM', '10:00 AM', '11:00 AM', '12:00 PM', '01:00 PM', '02:00 PM', '03:00 PM', '04:00 PM'
@@ -8,7 +8,7 @@ const TIME_SLOTS = [
 export default function BookingModal({ isOpen, onClose, selectedService }) {
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
-    service: selectedService?.name || 'Classic Box Braids',
+    service: selectedService?.title || 'Knotless Box Braids',
     date: '',
     time: '',
     name: '',
@@ -19,7 +19,7 @@ export default function BookingModal({ isOpen, onClose, selectedService }) {
 
   React.useEffect(() => {
     if (selectedService) {
-      setFormData(prev => ({ ...prev, service: selectedService.name }));
+      setFormData(prev => ({ ...prev, service: selectedService.title }));
     }
   }, [selectedService]);
 
@@ -51,7 +51,7 @@ export default function BookingModal({ isOpen, onClose, selectedService }) {
   const resetForm = () => {
     setStep(1);
     setFormData({
-      service: selectedService?.name || 'Classic Box Braids',
+      service: selectedService?.title || 'Knotless Box Braids',
       date: '',
       time: '',
       name: '',
@@ -66,14 +66,14 @@ export default function BookingModal({ isOpen, onClose, selectedService }) {
 
   return (
     <div className="modal-overlay" onClick={resetForm}>
-      <div className="modal-container" onClick={(e) => e.stopPropagation()}>
+      <div className="modal-container light-card" onClick={(e) => e.stopPropagation()}>
         {/* Header */}
         <div className="modal-header">
-          <h3 className="modal-title">
-            {step === 3 ? 'CONFIRMED' : 'BOOKING'}
+          <h3 className="modal-title text-gradient-pink heading-sm">
+            {step === 3 ? 'Booking Confirmed' : 'Request Appointment'}
           </h3>
           <button className="modal-close" onClick={resetForm} aria-label="Close booking modal">
-            <X size={28} />
+            <X size={24} />
           </button>
         </div>
 
@@ -81,34 +81,34 @@ export default function BookingModal({ isOpen, onClose, selectedService }) {
         {step === 1 && (
           <div className="modal-body">
             <div className="progress-bar">
-              <div className="progress-step active">1. DATE & TIME</div>
-              <div className="progress-step">2. CONTACT INFO</div>
+              <div className="progress-step active">1. Date & Time</div>
+              <div className="progress-step">2. Contact Info</div>
             </div>
 
             <div className="input-group">
-              <label className="input-label">STYLE</label>
+              <label className="input-label">Selected Hair Style</label>
               <select 
                 name="service" 
                 value={formData.service} 
                 onChange={handleInputChange}
                 className="modal-select"
               >
-                <option value="CLASSIC BOX BRAIDS">CLASSIC BOX BRAIDS</option>
-                <option value="KNOTLESS BOX BRAIDS">KNOTLESS BOX BRAIDS</option>
-                <option value="FEED-IN CORNROWS (6-8)">FEED-IN CORNROWS</option>
-                <option value="STITCH BRAIDS">STITCH BRAIDS</option>
-                <option value="SENEGALESE TWISTS">SENEGALESE TWISTS</option>
-                <option value="PASSION TWISTS">PASSION TWISTS</option>
-                <option value="FULL SEW-IN WEAVE">FULL SEW-IN WEAVE</option>
-                <option value="LACE CLOSURE WEAVE">LACE CLOSURE WEAVE</option>
-                <option value="Custom Braid Style/Other Inquiry">CUSTOM / OTHER</option>
+                <option value="Classic Box Braids">Classic Box Braids (starts at $160)</option>
+                <option value="Knotless Box Braids">Knotless Box Braids (starts at $180)</option>
+                <option value="Feed-In Cornrows">Feed-In Cornrows (starts at $90)</option>
+                <option value="Stitch Braids">Stitch Braids (starts at $110)</option>
+                <option value="Senegalese Twists">Senegalese Twists (starts at $150)</option>
+                <option value="Passion Twists">Passion Twists (starts at $140)</option>
+                <option value="Full Sew-In Weave">Full Sew-In Weave (starts at $180)</option>
+                <option value="Lace Closure Weave">Lace Closure Weave (starts at $200)</option>
+                <option value="Custom Braid Style">Custom Braid Style / Reference Photo</option>
               </select>
             </div>
 
             <div className="input-group">
-              <label className="input-label">DATE</label>
+              <label className="input-label">Choose Date</label>
               <div className="input-field-wrapper">
-                <Calendar className="input-icon text-accent" size={18} />
+                <Calendar className="input-icon text-pink" size={18} />
                 <input 
                   type="date" 
                   name="date" 
@@ -121,7 +121,7 @@ export default function BookingModal({ isOpen, onClose, selectedService }) {
             </div>
 
             <div className="input-group">
-              <label className="input-label">TIME SLOT</label>
+              <label className="input-label">Select Time Slot</label>
               <div className="time-grid">
                 {TIME_SLOTS.map(time => (
                   <button
@@ -136,8 +136,8 @@ export default function BookingModal({ isOpen, onClose, selectedService }) {
               </div>
             </div>
 
-            <button onClick={handleNextStep} className="btn btn-primary modal-action-btn">
-              NEXT <ChevronRight size={18} />
+            <button onClick={handleNextStep} className="btn btn-primary next-btn">
+              Next Step <ChevronRight size={18} />
             </button>
           </div>
         )}
@@ -145,18 +145,18 @@ export default function BookingModal({ isOpen, onClose, selectedService }) {
         {step === 2 && (
           <form onSubmit={handleSubmit} className="modal-body">
             <div className="progress-bar">
-              <div className="progress-step completed">1. DATE & TIME</div>
-              <div className="progress-step active">2. CONTACT INFO</div>
+              <div className="progress-step completed">1. Date & Time</div>
+              <div className="progress-step active">2. Contact Info</div>
             </div>
 
             <div className="input-group">
-              <label className="input-label">FULL NAME</label>
+              <label className="input-label">Full Name</label>
               <div className="input-field-wrapper">
-                <User className="input-icon text-accent" size={18} />
+                <User className="input-icon text-pink" size={18} />
                 <input 
                   type="text" 
                   name="name" 
-                  placeholder="NAME"
+                  placeholder="e.g. Sarah Jenkins"
                   value={formData.name} 
                   onChange={handleInputChange}
                   required
@@ -166,13 +166,13 @@ export default function BookingModal({ isOpen, onClose, selectedService }) {
             </div>
 
             <div className="input-group">
-              <label className="input-label">PHONE</label>
+              <label className="input-label">Phone Number</label>
               <div className="input-field-wrapper">
-                <Phone className="input-icon text-accent" size={18} />
+                <Phone className="input-icon text-pink" size={18} />
                 <input 
                   type="tel" 
                   name="phone" 
-                  placeholder="PHONE"
+                  placeholder="e.g. (203) 555-0123"
                   value={formData.phone} 
                   onChange={handleInputChange}
                   required
@@ -182,13 +182,13 @@ export default function BookingModal({ isOpen, onClose, selectedService }) {
             </div>
 
             <div className="input-group">
-              <label className="input-label">EMAIL</label>
+              <label className="input-label">Email Address</label>
               <div className="input-field-wrapper">
-                <Mail className="input-icon text-accent" size={18} />
+                <Mail className="input-icon text-pink" size={18} />
                 <input 
                   type="email" 
                   name="email" 
-                  placeholder="EMAIL"
+                  placeholder="e.g. sarah@example.com"
                   value={formData.email} 
                   onChange={handleInputChange}
                   required
@@ -198,11 +198,11 @@ export default function BookingModal({ isOpen, onClose, selectedService }) {
             </div>
 
             <div className="input-group">
-              <label className="input-label">NOTES / REQUESTS</label>
+              <label className="input-label">Special Requests</label>
               <textarea 
                 name="notes" 
                 rows="3" 
-                placeholder="ANY SPECIAL REQUESTS..."
+                placeholder="Preferred length, colors, or bringing your own extensions..."
                 value={formData.notes} 
                 onChange={handleInputChange}
                 className="modal-textarea"
@@ -210,11 +210,11 @@ export default function BookingModal({ isOpen, onClose, selectedService }) {
             </div>
 
             <div className="btn-group">
-              <button type="button" onClick={() => setStep(1)} className="btn btn-secondary flex-1 modal-action-btn">
-                BACK
+              <button type="button" onClick={() => setStep(1)} className="btn btn-secondary flex-1">
+                Back
               </button>
-              <button type="submit" className="btn btn-primary flex-2 modal-action-btn">
-                SUBMIT
+              <button type="submit" className="btn btn-primary flex-2">
+                Submit Inquiry
               </button>
             </div>
           </form>
@@ -222,30 +222,30 @@ export default function BookingModal({ isOpen, onClose, selectedService }) {
 
         {step === 3 && (
           <div className="modal-body success-screen">
-            <CheckCircle size={64} className="text-accent success-icon" />
+            <CheckCircle2 size={64} className="text-pink success-icon" />
             
-            <h4 className="success-header">REQUEST SUBMITTED</h4>
+            <h4 className="heading-sm">Request Submitted!</h4>
             <p className="success-text">
-              THANK YOU, {formData.name.toUpperCase()}. WE WILL CONFIRM YOUR APPOINTMENT SHORTLY.
+              Thank you, <strong>{formData.name}</strong>. Oumi's team has received your appointment request. We will reach out shortly to confirm details.
             </p>
 
             <div className="receipt">
               <div className="receipt-row">
-                <span className="receipt-label">ID</span>
-                <span className="receipt-value text-accent">{bookingId}</span>
+                <span className="receipt-label">Reference ID</span>
+                <span className="receipt-value text-pink">{bookingId}</span>
               </div>
               <div className="receipt-row">
-                <span className="receipt-label">STYLE</span>
+                <span className="receipt-label">Hair Style</span>
                 <span className="receipt-value">{formData.service}</span>
               </div>
               <div className="receipt-row">
-                <span className="receipt-label">TIME</span>
-                <span className="receipt-value">{formData.date} @ {formData.time}</span>
+                <span className="receipt-label">Scheduled For</span>
+                <span className="receipt-value">{formData.date} at {formData.time}</span>
               </div>
             </div>
 
-            <button onClick={resetForm} className="btn btn-primary modal-action-btn mt-24">
-              CLOSE
+            <button onClick={resetForm} className="btn btn-primary done-btn">
+              Done & Close
             </button>
           </div>
         )}
@@ -258,101 +258,93 @@ export default function BookingModal({ isOpen, onClose, selectedService }) {
           left: 0;
           width: 100%;
           height: 100%;
-          background: rgba(0, 0, 0, 0.9);
+          background: rgba(30, 15, 15, 0.6);
+          backdrop-filter: blur(8px);
+          -webkit-backdrop-filter: blur(8px);
           z-index: 1500;
           display: flex;
           align-items: center;
           justify-content: center;
           padding: 20px;
-          animation: fadeIn 0.2s ease;
+          animation: fadeIn 0.3s ease;
         }
         .modal-container {
           width: 100%;
           max-width: 520px;
-          background: var(--bg-white);
-          color: var(--text-dark);
-          animation: scaleUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-          border: 2px solid var(--text-dark);
+          overflow: hidden;
+          animation: fadeUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .modal-header {
           display: flex;
           justify-content: space-between;
           align-items: center;
-          padding: 24px 32px;
-          border-bottom: 2px solid var(--text-dark);
-          background: var(--bg-deep);
-          color: var(--text-light);
+          padding: 24px;
+          border-bottom: 1px solid var(--clr-border);
+          background: var(--clr-bg-alt);
         }
         .modal-title {
-          font-size: 1.5rem;
-          font-weight: 900;
-          letter-spacing: 0.05em;
+          margin: 0;
         }
         .modal-close {
           background: transparent;
           border: none;
-          color: var(--text-light);
-          cursor: pointer;
-          transition: color 0.2s ease;
+          color: var(--clr-text-muted);
+          transition: color var(--trans-fast);
         }
         .modal-close:hover {
-          color: var(--primary-accent);
+          color: var(--clr-rose);
         }
         
         .modal-body {
-          padding: 32px;
-          text-align: left;
+          padding: 24px;
+          background: var(--clr-surface);
         }
         
         /* Progress Indicator */
         .progress-bar {
           display: flex;
           justify-content: space-between;
-          margin-bottom: 32px;
-          border-bottom: 2px solid var(--border-color-dark);
-          padding-bottom: 16px;
-          font-size: 0.75rem;
-          color: var(--text-muted);
-          letter-spacing: 0.1em;
+          margin-bottom: 24px;
+          border-bottom: 1px solid var(--clr-border);
+          padding-bottom: 12px;
+          font-size: 0.85rem;
+          color: var(--clr-text-muted);
         }
         .progress-step {
-          font-weight: 700;
+          font-weight: 500;
         }
         .progress-step.active {
-          color: var(--text-dark);
+          color: var(--clr-pink);
+          font-weight: 600;
         }
         .progress-step.completed {
-          color: var(--success);
+          color: var(--clr-rose);
         }
 
         /* Inputs */
         .input-group {
           display: flex;
           flex-direction: column;
-          gap: 8px;
-          margin-bottom: 24px;
+          gap: 6px;
+          margin-bottom: 20px;
         }
         .input-label {
-          font-size: 0.75rem;
-          color: var(--text-dark);
-          font-weight: 900;
-          letter-spacing: 0.1em;
+          font-size: 0.85rem;
+          color: var(--clr-text);
+          font-weight: 500;
         }
         .modal-select {
-          background: transparent;
-          border: 1px solid var(--border-color-dark);
-          color: var(--text-dark);
-          padding: 16px;
-          border-radius: 0;
+          background: var(--clr-bg);
+          border: 1px solid var(--clr-border);
+          color: var(--clr-text);
+          padding: 12px;
+          border-radius: var(--radius-sm);
           outline: none;
           font-size: 0.95rem;
-          font-weight: 700;
-          letter-spacing: 0.05em;
           cursor: pointer;
-          appearance: none;
         }
         .modal-select:focus {
-          border-color: var(--primary-accent);
+          border-color: var(--clr-pink);
         }
         .input-field-wrapper {
           position: relative;
@@ -361,33 +353,29 @@ export default function BookingModal({ isOpen, onClose, selectedService }) {
         }
         .input-icon {
           position: absolute;
-          left: 16px;
+          left: 14px;
         }
         .modal-input {
           width: 100%;
-          background: transparent;
-          border: 1px solid var(--border-color-dark);
-          color: var(--text-dark);
-          padding: 16px 16px 16px 48px;
-          border-radius: 0;
+          background: var(--clr-bg);
+          border: 1px solid var(--clr-border);
+          color: var(--clr-text);
+          padding: 12px 12px 12px 42px;
+          border-radius: var(--radius-sm);
           outline: none;
           font-size: 0.95rem;
-          font-weight: 700;
-          letter-spacing: 0.05em;
         }
         .modal-input:focus, .modal-textarea:focus {
-          border-color: var(--primary-accent);
+          border-color: var(--clr-pink);
         }
         .modal-textarea {
-          background: transparent;
-          border: 1px solid var(--border-color-dark);
-          color: var(--text-dark);
-          padding: 16px;
-          border-radius: 0;
+          background: var(--clr-bg);
+          border: 1px solid var(--clr-border);
+          color: var(--clr-text);
+          padding: 12px;
+          border-radius: var(--radius-sm);
           outline: none;
           font-size: 0.95rem;
-          font-weight: 700;
-          letter-spacing: 0.05em;
           resize: vertical;
         }
         
@@ -395,48 +383,47 @@ export default function BookingModal({ isOpen, onClose, selectedService }) {
         .time-grid {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
-          gap: 12px;
-          margin-top: 8px;
+          gap: 10px;
+          margin-top: 4px;
         }
         .time-btn {
           display: flex;
           align-items: center;
           justify-content: center;
-          gap: 8px;
-          background: transparent;
-          border: 1px solid var(--border-color-dark);
-          color: var(--text-dark);
-          padding: 12px;
-          border-radius: 0;
-          font-size: 0.75rem;
-          font-weight: 700;
-          letter-spacing: 0.05em;
-          cursor: pointer;
-          transition: all 0.2s ease;
+          gap: 6px;
+          background: var(--clr-bg);
+          border: 1px solid var(--clr-border);
+          color: var(--clr-text);
+          padding: 10px;
+          border-radius: var(--radius-sm);
+          font-size: 0.85rem;
+          transition: all var(--trans-fast);
         }
         .time-btn:hover {
-          border-color: var(--primary-accent);
-          color: var(--primary-accent);
+          background: var(--clr-bg-alt);
+          border-color: var(--clr-pink);
         }
         .time-btn.selected {
-          background: var(--text-dark);
-          color: var(--text-light);
-          border-color: var(--text-dark);
+          background: var(--clr-pink);
+          color: white;
+          border-color: var(--clr-pink);
         }
 
-        .modal-action-btn {
+        .next-btn {
           width: 100%;
-          padding: 16px;
-          margin-top: 16px;
+          justify-content: center;
+          padding: 12px;
+          margin-top: 8px;
+          border-radius: var(--radius-full);
         }
         
         .btn-group {
           display: flex;
-          gap: 16px;
+          gap: 12px;
           margin-top: 24px;
         }
-        .flex-1 { flex: 1; }
-        .flex-2 { flex: 2; }
+        .flex-1 { flex: 1; border-radius: var(--radius-full); justify-content: center; }
+        .flex-2 { flex: 2; border-radius: var(--radius-full); justify-content: center; }
         
         /* Success Screen */
         .success-screen {
@@ -444,53 +431,53 @@ export default function BookingModal({ isOpen, onClose, selectedService }) {
           flex-direction: column;
           align-items: center;
           text-align: center;
-          padding: 48px 32px;
+          padding: 40px 24px;
         }
         .success-icon {
-          margin-bottom: 24px;
-        }
-        .success-header {
-          font-size: 1.5rem;
-          color: var(--text-dark);
-          margin-bottom: 12px;
-          font-weight: 900;
-          letter-spacing: 0.05em;
+          margin-bottom: 20px;
         }
         .success-text {
-          font-size: 0.85rem;
-          color: var(--text-muted);
-          margin-bottom: 32px;
-          font-weight: 700;
-          letter-spacing: 0.05em;
+          font-size: 0.95rem;
+          color: var(--clr-text-muted);
+          margin-bottom: 24px;
           line-height: 1.6;
         }
         .receipt {
           width: 100%;
-          border-top: 1px solid var(--border-color-dark);
-          border-bottom: 1px solid var(--border-color-dark);
-          padding: 24px 0;
-          margin-bottom: 32px;
+          background: var(--clr-bg);
+          border: 1px solid var(--clr-border);
+          border-radius: var(--radius-md);
+          padding: 20px;
+          margin-bottom: 24px;
           display: flex;
           flex-direction: column;
-          gap: 16px;
+          gap: 12px;
           text-align: left;
         }
         .receipt-row {
           display: flex;
           justify-content: space-between;
           align-items: center;
-          font-size: 0.75rem;
-          font-weight: 700;
-          letter-spacing: 0.1em;
+          font-size: 0.9rem;
+          border-bottom: 1px solid var(--clr-border);
+          padding-bottom: 8px;
+        }
+        .receipt-row:last-child {
+          border-bottom: none;
+          padding-bottom: 0;
         }
         .receipt-label {
-          color: var(--text-muted);
+          color: var(--clr-text-muted);
         }
         .receipt-value {
-          color: var(--text-dark);
+          color: var(--clr-text);
+          font-weight: 500;
         }
-        .mt-24 {
-          margin-top: 24px;
+        .done-btn {
+          width: 100%;
+          justify-content: center;
+          padding: 12px;
+          border-radius: var(--radius-full);
         }
 
         @media (max-width: 480px) {

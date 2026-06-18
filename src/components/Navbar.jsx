@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Phone } from 'lucide-react';
+import { Menu, X, Phone, Sparkles } from 'lucide-react';
 
 export default function Navbar({ onBookOpen }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,24 +18,25 @@ export default function Navbar({ onBookOpen }) {
   }, []);
 
   return (
-    <nav className={`nav ${scrolled ? 'nav-scrolled bg-glass' : ''}`}>
+    <nav className={`nav ${scrolled ? 'nav-scrolled' : ''}`}>
       <div className="container nav-container">
         {/* Logo */}
         <a href="#" className="nav-logo">
-          OUMI'S<span className="text-accent">HAVEN</span>
+          <span className="logo-sparkle"><Sparkles size={18} className="text-gradient-gold" /></span>
+          <span className="heading-sm">OUMI'S HAVEN</span>
         </a>
 
         {/* Desktop Menu */}
         <div className="nav-links-desktop">
-          <a href="#services" className="nav-link">SERVICES</a>
-          <a href="#gallery" className="nav-link">GALLERY</a>
-          <a href="#reviews" className="nav-link">REVIEWS</a>
-          <a href="#contact" className="nav-link">CONTACT</a>
+          <a href="#services" className="nav-link">Services</a>
+          <a href="#gallery" className="nav-link">Gallery</a>
+          <a href="#reviews" className="nav-link">Reviews</a>
+          <a href="#contact" className="nav-link">Contact</a>
           <a href="tel:2037763381" className="nav-call">
             <Phone size={14} /> 203.776.3381
           </a>
-          <button onClick={onBookOpen} className="btn btn-primary nav-btn">
-            BOOK NOW
+          <button onClick={onBookOpen} className="btn btn-primary nav-btn" style={{ borderRadius: 'var(--radius-full)' }}>
+            Book Appointment
           </button>
         </div>
 
@@ -46,16 +47,16 @@ export default function Navbar({ onBookOpen }) {
       </div>
 
       {/* Mobile Drawer Menu */}
-      <div className={`nav-menu-mobile bg-glass ${isOpen ? 'open' : ''}`}>
-        <a href="#services" onClick={() => setIsOpen(false)} className="nav-link-mobile">SERVICES</a>
-        <a href="#gallery" onClick={() => setIsOpen(false)} className="nav-link-mobile">GALLERY</a>
-        <a href="#reviews" onClick={() => setIsOpen(false)} className="nav-link-mobile">REVIEWS</a>
-        <a href="#contact" onClick={() => setIsOpen(false)} className="nav-link-mobile">CONTACT</a>
+      <div className={`nav-menu-mobile ${isOpen ? 'open' : ''}`}>
+        <a href="#services" onClick={() => setIsOpen(false)} className="nav-link-mobile">Services</a>
+        <a href="#gallery" onClick={() => setIsOpen(false)} className="nav-link-mobile">Gallery</a>
+        <a href="#reviews" onClick={() => setIsOpen(false)} className="nav-link-mobile">Reviews</a>
+        <a href="#contact" onClick={() => setIsOpen(false)} className="nav-link-mobile">Contact</a>
         <a href="tel:2037763381" className="nav-call-mobile">
-          <Phone size={16} className="text-accent" /> 203.776.3381
+          <Phone size={16} color="var(--clr-rose)" /> 203.776.3381
         </a>
-        <button onClick={() => { setIsOpen(false); onBookOpen(); }} className="btn btn-primary btn-mobile">
-          BOOK NOW
+        <button onClick={() => { setIsOpen(false); onBookOpen(); }} className="btn btn-primary btn-mobile" style={{ borderRadius: 'var(--radius-full)' }}>
+          Book Appointment
         </button>
       </div>
 
@@ -68,12 +69,18 @@ export default function Navbar({ onBookOpen }) {
           z-index: 1000;
           transition: all 0.3s ease;
           border-bottom: 1px solid transparent;
-          background: var(--bg-white);
+          background: transparent;
         }
         .nav-scrolled {
-          border-bottom: 1px solid var(--border-color-dark);
-          padding: 0;
+          background: rgba(250, 248, 245, 0.95);
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+          border-bottom: 1px solid var(--clr-border);
+          box-shadow: var(--shadow-sm);
         }
+        /* When not scrolled and on hero (which is dark), text is white. 
+           But since Wido uses warm ivory everywhere or dark hero, let's assume ivory background everywhere except hero. 
+           Wait, Hero is dark? Wido hero might be dark with glass card. Let's make navbar text dark always for simplicity unless we specifically style it. */
         .nav-container {
           display: flex;
           align-items: center;
@@ -83,11 +90,11 @@ export default function Navbar({ onBookOpen }) {
         .nav-logo {
           display: flex;
           align-items: center;
-          font-family: var(--font-heading);
-          font-weight: 900;
-          font-size: 1.5rem;
-          letter-spacing: -0.02em;
-          color: var(--text-dark);
+          gap: 8px;
+          color: var(--clr-heading);
+        }
+        .logo-sparkle {
+          margin-bottom: 4px;
         }
         .nav-links-desktop {
           display: flex;
@@ -95,37 +102,35 @@ export default function Navbar({ onBookOpen }) {
           gap: 32px;
         }
         .nav-link {
-          font-size: 0.85rem;
-          font-weight: 700;
-          letter-spacing: 0.05em;
-          color: var(--text-dark);
+          font-size: 0.9rem;
+          font-weight: 500;
+          color: var(--clr-text);
           position: relative;
-          padding: 8px 0;
         }
         .nav-link:hover, .nav-link:focus {
-          color: var(--primary-accent);
+          color: var(--clr-rose);
         }
         .nav-call {
           display: flex;
           align-items: center;
           gap: 6px;
-          font-size: 0.85rem;
-          font-weight: 700;
-          color: var(--primary-accent);
-          letter-spacing: 0.05em;
+          font-size: 0.9rem;
+          font-weight: 600;
+          color: var(--clr-text-muted);
         }
         .nav-call:hover {
-          color: var(--primary-accent-hover);
+          color: var(--clr-rose);
         }
         .nav-btn {
           padding: 10px 24px;
-          font-size: 0.8rem;
+          font-size: 0.85rem;
+          text-transform: none;
         }
         .nav-toggle {
           display: none;
           background: transparent;
           border: none;
-          color: var(--text-dark);
+          color: var(--clr-text);
           cursor: pointer;
         }
         .nav-menu-mobile {
@@ -137,8 +142,9 @@ export default function Navbar({ onBookOpen }) {
           padding: 32px 24px;
           flex-direction: column;
           gap: 24px;
-          border-top: 1px solid var(--border-color-dark);
-          border-bottom: 1px solid var(--border-color-dark);
+          background: var(--clr-bg);
+          border-bottom: 1px solid var(--clr-border);
+          box-shadow: var(--shadow-sm);
           transform: translateY(-150%);
           transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
@@ -146,19 +152,20 @@ export default function Navbar({ onBookOpen }) {
           transform: translateY(0);
         }
         .nav-link-mobile {
-          font-size: 1.25rem;
-          font-weight: 700;
-          color: var(--text-dark);
-          padding: 8px 0;
-          border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+          font-family: var(--font-heading);
+          font-size: 1.5rem;
+          font-weight: 600;
+          color: var(--clr-heading);
+          border-bottom: 1px solid var(--clr-border);
+          padding-bottom: 12px;
         }
         .nav-call-mobile {
           display: flex;
           align-items: center;
           gap: 12px;
-          font-size: 1.25rem;
-          font-weight: 700;
-          color: var(--primary-accent);
+          font-size: 1.1rem;
+          font-weight: 500;
+          color: var(--clr-text);
         }
         .btn-mobile {
           width: 100%;

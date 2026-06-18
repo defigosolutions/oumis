@@ -1,38 +1,99 @@
-/* Oumi's Haven Hair Braiding - Editorial CSS Design System (Vidal Sassoon Inspired) */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Great+Vibes&display=swap');
+
+/* ============================================================
+   OUMI'S HAVEN HAIR BRAIDING – BOUTIQUE LUXURY DESIGN SYSTEM
+   Warm ivory + dusty rose + gold — boutique luxury salon feel
+   ============================================================ */
 
 :root {
-  /* Color Palette - Stark Black, White & Accent Red */
-  --primary-accent: #e31837; /* Sassoon Red */
-  --primary-accent-rgb: 227, 24, 55;
-  --primary-accent-hover: #b3122b;
-  
-  --bg-deep: #050505;
-  --bg-surface: #111111;
-  --bg-surface-light: #1f1f1f;
-  --bg-white: #ffffff;
-  
-  --text-light: #ffffff;
-  --text-muted: #888888;
-  --text-dark: #050505;
-  
-  --accent-soft: rgba(227, 24, 55, 0.15);
-  --border-color: rgba(255, 255, 255, 0.15);
-  --border-color-dark: rgba(0, 0, 0, 0.15);
-  --border-color-light: rgba(255, 255, 255, 0.05);
+  /* ── Background & Surface ── */
+  --clr-bg:          #faf8f5;   /* warm ivory */
+  --clr-bg-alt:      #f4ede6;   /* warm blush section */
+  --clr-bg-dark:     #1e0f0f;   /* hero / footer only */
+  --clr-surface:     #ffffff;
+  --clr-card:        #ffffff;
+  --clr-card-hover:  #fff6f3;
 
-  --success: #10b981;
-  --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-  
-  --font-sans: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  --font-heading: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  
-  transition: background-color 0.3s ease, border-color 0.3s ease;
+  /* ── Brand Colors ── */
+  --clr-pink:        #c9707f;   /* dusty rose */
+  --clr-rose:        #a8344a;   /* deep rose */
+  --clr-rose-light:  #f2c4cb;   /* blush */
+  --clr-purple:      #9477b4;   /* soft mauve / violet */
+  --clr-purple-light:#e8dff0;   /* lavender tint */
+  --clr-gold:        #c5933e;   /* warm gold */
+  --clr-gold-light:  #f5e6c8;   /* champagne */
+  --clr-white:       #ffffff;
+  --clr-cream:       #faf8f5;
+
+  /* ── Text ── */
+  --clr-text:        #221010;   /* dark warm brown */
+  --clr-text-muted:  #7a6060;   /* warm gray */
+  --clr-text-light:  #b09090;   /* light warm gray */
+  --clr-heading:     #1a0808;
+
+  /* ── Borders ── */
+  --clr-border:       rgba(160, 100, 100, 0.12);
+  --clr-border-warm:  rgba(197, 147, 62, 0.25);
+  --clr-border-pink:  rgba(201, 112, 127, 0.2);
+
+  /* ── Gradients ── */
+  --grad-accent:      linear-gradient(135deg, #9477b4 0%, #c9707f 100%);
+  --grad-pink:        linear-gradient(135deg, #c9707f 0%, #a8344a 100%);
+  --grad-gold:        linear-gradient(135deg, #c5933e 0%, #e8b860 100%);
+  --grad-hero-overlay: linear-gradient(
+    to bottom,
+    rgba(20,8,8,0.55) 0%,
+    rgba(60,15,25,0.45) 40%,
+    rgba(20,8,8,0.75) 100%
+  );
+  --grad-card:         linear-gradient(145deg, #fff 0%, #fff6f3 100%);
+  --grad-section-alt:  linear-gradient(180deg, #faf8f5 0%, #f4ede6 50%, #faf8f5 100%);
+
+  /* ── Typography ── */
+  --font-heading: 'Playfair Display', Georgia, serif;
+  --font-body:    'Inter', system-ui, sans-serif;
+  --font-accent:  'Cormorant Garamond', Georgia, serif;
+  --font-cursive: 'Great Vibes', cursive;
+
+  /* ── Spacing ── */
+  --space-xs:  0.25rem;
+  --space-sm:  0.5rem;
+  --space-md:  1rem;
+  --space-lg:  1.5rem;
+  --space-xl:  2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
+  --space-4xl: 6rem;
+  --space-5xl: 8rem;
+
+  /* ── Radius ── */
+  --radius-sm:   6px;
+  --radius-md:   14px;
+  --radius-lg:   24px;
+  --radius-xl:   36px;
+  --radius-full: 9999px;
+
+  /* ── Shadows (warm, not glowy) ── */
+  --shadow-xs:   0 1px 4px rgba(100, 40, 40, 0.06);
+  --shadow-sm:   0 2px 12px rgba(100, 40, 40, 0.08);
+  --shadow-md:   0 8px 28px rgba(100, 40, 40, 0.11);
+  --shadow-lg:   0 16px 48px rgba(100, 40, 40, 0.14);
+  --shadow-card: 0 4px 20px rgba(100, 40, 40, 0.09);
+  --shadow-warm: 0 8px 32px rgba(197, 147, 62, 0.15);
+
+  /* ── Transitions ── */
+  --trans-fast: 0.18s ease;
+  --trans-mid:  0.32s ease;
+  --trans-slow: 0.5s ease;
+
+  /* ── Layout ── */
+  --navbar-h: 72px;
 }
 
-/* Base Styles */
-* {
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+*, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -40,203 +101,316 @@
 
 html {
   scroll-behavior: smooth;
-  background-color: var(--bg-white);
-  color: var(--text-dark);
-  font-family: var(--font-sans);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-size: 16px;
 }
 
 body {
+  background-color: var(--clr-bg);
+  color: var(--clr-text);
+  font-family: var(--font-body);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
-  background-color: var(--bg-white);
-  line-height: 1.6;
 }
 
-#root {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
+img   { max-width: 100%; height: auto; display: block; }
+a     { color: inherit; text-decoration: none; }
+ul    { list-style: none; }
+button { cursor: pointer; font-family: var(--font-body); border: none; outline: none; }
+input, textarea, select { font-family: var(--font-body); }
 
-/* Typography */
-h1, h2, h3, h4, h5, h6 {
+/* ============================================================
+   TYPOGRAPHY UTILITIES
+   ============================================================ */
+.heading-xl {
   font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 6vw, 5rem);
   font-weight: 700;
-  letter-spacing: -0.03em;
   line-height: 1.1;
-  text-transform: uppercase;
+  color: var(--clr-heading);
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-  transition: all 0.2s ease;
+.heading-lg {
+  font-family: var(--font-heading);
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--clr-heading);
 }
 
-button, input, textarea, select {
-  font-family: inherit;
-  color: inherit;
-  outline: none;
+.heading-md {
+  font-family: var(--font-heading);
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 600;
+  color: var(--clr-heading);
 }
 
-/* Scrollbar Style */
-::-webkit-scrollbar {
-  width: 6px;
-}
-::-webkit-scrollbar-track {
-  background: var(--bg-white);
-}
-::-webkit-scrollbar-thumb {
-  background: var(--bg-deep);
-}
-::-webkit-scrollbar-thumb:hover {
-  background: var(--primary-accent);
+.heading-sm {
+  font-family: var(--font-heading);
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  font-weight: 600;
+  color: var(--clr-heading);
 }
 
-/* Utilities */
+.text-gradient {
+  background: var(--grad-accent);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-pink {
+  background: var(--grad-pink);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-gold {
+  background: var(--grad-gold);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-muted { color: var(--clr-text-muted); }
+
+/* ============================================================
+   LAYOUT UTILITIES
+   ============================================================ */
 .container {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 var(--space-xl);
 }
 
-.text-accent {
-  color: var(--primary-accent);
+.section    { padding: var(--space-5xl) 0; position: relative; }
+.section-sm { padding: var(--space-3xl) 0; }
+
+.section-header {
+  text-align: center;
+  margin-bottom: var(--space-3xl);
 }
 
-.text-gradient {
-  color: var(--primary-accent);
+.section-tag {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--clr-pink);
+  background: rgba(201, 112, 127, 0.09);
+  border: 1px solid rgba(201, 112, 127, 0.22);
+  padding: 0.4rem 1.1rem;
+  border-radius: var(--radius-full);
+  margin-bottom: var(--space-md);
 }
 
-.bg-glass {
-  background: var(--bg-white);
-  border: 1px solid var(--border-color-dark);
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 0.8rem;
+  color: var(--clr-text-muted);
+  margin-bottom: var(--space-md);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
 
-.bg-dark {
-  background: var(--bg-deep);
-  color: var(--text-light);
+.breadcrumb a {
+  color: var(--clr-text);
+  transition: color var(--trans-fast);
 }
 
-.bg-dark .bg-glass {
-  background: var(--bg-surface);
-  border: 1px solid var(--border-color);
+.breadcrumb a:hover {
+  color: var(--clr-rose);
 }
 
-/* Animations & Transitions */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+.breadcrumb-sep {
+  color: var(--clr-pink);
+  font-size: 0.9rem;
 }
 
-.animate-fade-in {
-  animation: fadeIn 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+.section-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: var(--space-md);
+  color: var(--clr-heading);
 }
 
-/* Buttons */
+.section-subtitle {
+  font-size: 1.02rem;
+  color: var(--clr-text-muted);
+  max-width: 540px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+/* ============================================================
+   BUTTON UTILITIES (Professional, Clean)
+   ============================================================ */
 .btn {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 14px 28px;
-  border-radius: 0; /* Sharp corners */
-  font-weight: 600;
-  text-transform: uppercase;
+  gap: var(--space-sm);
+  padding: 0.85rem 2.2rem;
+  border-radius: 4px; /* professional, sharp corners */
+  font-weight: 500;
+  font-size: 0.88rem;
   letter-spacing: 0.05em;
+  transition: all var(--trans-fast);
   cursor: pointer;
-  transition: all 0.3s ease;
-  font-size: 0.85rem;
   border: none;
+  position: relative;
+  overflow: hidden;
+  text-transform: uppercase;
 }
 
 .btn-primary {
-  background: var(--bg-deep);
-  color: var(--text-light);
-  border: 1px solid var(--bg-deep);
+  background: var(--clr-text);
+  color: #fff;
+  border: 1px solid var(--clr-text);
 }
 
 .btn-primary:hover {
-  background: var(--primary-accent);
-  border-color: var(--primary-accent);
-  color: var(--text-light);
+  background: var(--clr-rose);
+  border-color: var(--clr-rose);
 }
 
 .btn-secondary {
   background: transparent;
-  color: var(--text-dark);
-  border: 1px solid var(--text-dark);
+  color: var(--clr-text);
+  border: 1px solid var(--clr-text-light);
 }
 
 .btn-secondary:hover {
-  background: var(--bg-deep);
-  color: var(--text-light);
+  border-color: var(--clr-text);
+  background: var(--clr-bg-alt);
 }
 
-/* Dark mode versions of buttons */
-.bg-dark .btn-primary {
-  background: var(--bg-white);
-  color: var(--text-dark);
-  border: 1px solid var(--bg-white);
+.btn-gold {
+  background: var(--clr-gold);
+  color: #fff;
 }
 
-.bg-dark .btn-primary:hover {
-  background: var(--primary-accent);
-  border-color: var(--primary-accent);
-  color: var(--text-light);
+.btn-gold:hover {
+  background: #b38230;
 }
 
-.bg-dark .btn-secondary {
+.btn-outline {
   background: transparent;
-  color: var(--text-light);
-  border: 1px solid var(--text-light);
+  color: var(--clr-rose);
+  border: 1px solid var(--clr-rose);
 }
 
-.bg-dark .btn-secondary:hover {
-  background: var(--bg-white);
-  color: var(--text-dark);
+.btn-outline:hover {
+  background: var(--clr-rose);
+  color: #fff;
 }
 
-/* Sections General */
-.section {
-  padding: 100px 0;
-  position: relative;
+/* Hero buttons (on dark background) */
+.btn-outline-purple {
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.4);
+  backdrop-filter: blur(4px);
 }
 
-.section-title-wrapper {
-  margin-bottom: 60px;
+.btn-outline-purple:hover {
+  background: #fff;
+  color: var(--clr-text);
 }
 
-.section-title-wrapper.center {
-  text-align: center;
+/* ============================================================
+   DIVIDER
+   ============================================================ */
+.divider {
+  width: 52px;
+  height: 3px;
+  background: var(--grad-pink);
+  border-radius: var(--radius-full);
+  margin: var(--space-md) auto;
 }
 
-.section-subtitle {
-  color: var(--primary-accent);
-  text-transform: uppercase;
-  font-size: 0.75rem;
-  letter-spacing: 0.2em;
-  font-weight: 700;
-  margin-bottom: 16px;
-  display: block;
+.divider-left {
+  margin: var(--space-md) 0;
 }
 
-.section-title {
-  font-size: 3rem;
-  color: inherit;
-  font-family: var(--font-heading);
-  text-transform: uppercase;
-  font-weight: 900;
-  line-height: 1;
+.divider-gold {
+  background: var(--grad-gold);
 }
 
+/* ============================================================
+   DECORATIVE BLOBS
+   ============================================================ */
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ============================================================
+   GLASS CARD (used on dark sections only)
+   ============================================================ */
+.glass-card {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: var(--radius-lg);
+}
+
+/* Light card (used on light sections) */
+.light-card {
+  background: var(--clr-surface);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+}
+
+/* ============================================================
+   SCROLL ANIMATIONS
+   ============================================================ */
+.fade-up {
+  opacity: 0;
+  transform: translateY(36px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+  animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(36px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================================
+   SCROLLBAR
+   ============================================================ */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--clr-bg); }
+::-webkit-scrollbar-thumb {
+  background: var(--clr-rose-light);
+  border-radius: var(--radius-full);
+}
+::-webkit-scrollbar-thumb:hover { background: var(--clr-pink); }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
 @media (max-width: 768px) {
-  .section {
-    padding: 60px 0;
-  }
-  .section-title {
-    font-size: 2.2rem;
-  }
+  .container { padding: 0 var(--space-lg); }
+  .section   { padding: var(--space-4xl) 0; }
+}
+
+@media (max-width: 480px) {
+  .container { padding: 0 var(--space-md); }
+  .section   { padding: var(--space-3xl) 0; }
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowUp, Phone, MapPin } from 'lucide-react';
+import { Sparkles, ArrowUp, Phone, MapPin } from 'lucide-react';
 
 export default function Footer() {
   const scrollToTop = () => {
@@ -7,13 +7,14 @@ export default function Footer() {
   };
 
   return (
-    <footer className="footer bg-dark">
+    <footer className="footer">
       <div className="container footer-container">
         
         {/* Brand Info */}
-        <div className="footer-brand">
+        <div className="footer-brand fade-up">
           <a href="#" className="footer-logo">
-            OUMI'S <span className="text-accent">HAVEN</span>
+            <span className="logo-sparkle"><Sparkles size={20} className="text-gold" /></span>
+            <span className="heading-sm text-white">OUMI'S HAVEN</span>
           </a>
           <p className="footer-tagline">
             Specializing in high-end natural hair care, professional African braiding, weaves, and styling. Empowering confidence since 1994.
@@ -29,35 +30,35 @@ export default function Footer() {
         </div>
 
         {/* Quick Links */}
-        <div className="footer-links-col">
-          <h3>LINKS</h3>
+        <div className="footer-links-col fade-up stagger-1">
+          <h3>Quick Links</h3>
           <ul className="footer-links">
-            <li><a href="#services">SERVICES MENU</a></li>
-            <li><a href="#gallery">LOOKBOOK</a></li>
-            <li><a href="#reviews">TESTIMONIALS</a></li>
-            <li><a href="#contact">LOCATION & HOURS</a></li>
+            <li><a href="#services">Services Menu</a></li>
+            <li><a href="#gallery">Styles Gallery</a></li>
+            <li><a href="#reviews">Client Reviews</a></li>
+            <li><a href="#contact">Location & Hours</a></li>
           </ul>
         </div>
 
         {/* Contact Info column */}
-        <div className="footer-links-col">
-          <h3>VISIT</h3>
+        <div className="footer-links-col fade-up stagger-2">
+          <h3>Visit Us</h3>
           <ul className="footer-contact">
             <li>
-              <MapPin size={16} className="text-accent" />
-              <span>1245 DIXWELL AVE<br/>HAMDEN, CT 06514</span>
+              <MapPin size={16} className="text-pink" />
+              <span>1245 Dixwell Ave<br/>Hamden, CT 06514</span>
             </li>
             <li>
-              <Phone size={16} className="text-accent" />
+              <Phone size={16} className="text-pink" />
               <span>203.776.3381<br/>203.407.0474</span>
             </li>
           </ul>
         </div>
 
         {/* Action Column */}
-        <div className="footer-action-col">
-          <button onClick={scrollToTop} className="btn btn-secondary top-btn" aria-label="Scroll to top">
-            BACK TO TOP <ArrowUp size={16} />
+        <div className="footer-action-col fade-up stagger-3">
+          <button onClick={scrollToTop} className="btn btn-outline-purple top-btn" style={{ borderRadius: 'var(--radius-full)' }} aria-label="Scroll to top">
+            Back to Top <ArrowUp size={16} />
           </button>
         </div>
 
@@ -65,21 +66,22 @@ export default function Footer() {
 
       <div className="footer-bottom">
         <div className="container bottom-container">
-          <p>&copy; {new Date().getFullYear()} OUMI'S HAVEN. ALL RIGHTS RESERVED.</p>
-          <p className="legacy-text">DIOP FAMILY LEGACY — EST. 1994</p>
+          <p>&copy; {new Date().getFullYear()} Oumi's Haven Hair Braiding. All Rights Reserved.</p>
+          <p className="legacy-text">Diop Family Legacy — Est. 1994</p>
         </div>
       </div>
 
       <style>{`
         .footer {
-          padding: 100px 0 24px;
-          border-top: 2px solid var(--text-dark);
+          background-color: var(--clr-bg-dark);
+          padding: 80px 0 24px;
           margin-top: auto;
+          color: rgba(255, 255, 255, 0.7);
         }
         .footer-container {
           display: grid;
           grid-template-columns: 1.5fr 1fr 1.2fr 0.8fr;
-          gap: 64px;
+          gap: 48px;
           align-items: start;
           text-align: left;
           margin-bottom: 64px;
@@ -87,85 +89,85 @@ export default function Footer() {
         .footer-brand {
           display: flex;
           flex-direction: column;
-          gap: 24px;
+          gap: 20px;
         }
         .footer-logo {
           display: flex;
           align-items: center;
           gap: 8px;
-          font-family: var(--font-heading);
-          font-weight: 900;
-          font-size: 1.5rem;
-          letter-spacing: -0.02em;
-          color: var(--text-light);
+        }
+        .logo-sparkle {
+          margin-bottom: 4px;
+        }
+        .text-white {
+          color: white;
+        }
+        .text-gold {
+          color: var(--clr-gold-light);
+        }
+        .text-pink {
+          color: var(--clr-pink);
         }
         .footer-tagline {
-          font-size: 0.85rem;
-          color: var(--text-muted);
+          font-size: 0.9rem;
           line-height: 1.6;
-          letter-spacing: 0.05em;
         }
         .footer-socials {
           display: flex;
-          gap: 16px;
+          gap: 12px;
         }
         .social-icon {
           display: flex;
           align-items: center;
           justify-content: center;
-          width: 40px;
-          height: 40px;
-          background: transparent;
-          color: var(--text-light);
-          border: 1px solid var(--border-color);
-          transition: all 0.2s ease;
+          width: 36px;
+          height: 36px;
+          border-radius: 50%;
+          background: rgba(255, 255, 255, 0.05);
+          color: rgba(255, 255, 255, 0.8);
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          transition: all var(--trans-fast);
         }
         .social-icon:hover {
-          color: var(--bg-deep);
-          border-color: var(--text-light);
-          background: var(--text-light);
+          color: var(--clr-gold-light);
+          border-color: var(--clr-gold-light);
+          background: rgba(197, 147, 62, 0.1);
         }
         
         .footer-links-col h3 {
-          font-size: 0.85rem;
-          text-transform: uppercase;
-          color: var(--primary-accent);
+          font-size: 1.1rem;
+          font-family: var(--font-heading);
+          color: white;
           margin-bottom: 24px;
-          letter-spacing: 0.1em;
-          font-weight: 900;
+          font-weight: 600;
         }
         .footer-links {
           list-style: none;
           display: flex;
           flex-direction: column;
-          gap: 16px;
+          gap: 12px;
         }
         .footer-links a {
-          font-size: 0.85rem;
-          color: var(--text-muted);
-          font-weight: 700;
-          letter-spacing: 0.05em;
+          font-size: 0.9rem;
+          transition: color var(--trans-fast);
         }
         .footer-links a:hover {
-          color: var(--text-light);
+          color: var(--clr-pink);
         }
         .footer-contact {
           list-style: none;
           display: flex;
           flex-direction: column;
-          gap: 24px;
-          font-size: 0.85rem;
-          color: var(--text-muted);
-          font-weight: 700;
-          letter-spacing: 0.05em;
+          gap: 16px;
+          font-size: 0.9rem;
         }
         .footer-contact li {
           display: flex;
-          gap: 16px;
+          gap: 12px;
           align-items: flex-start;
         }
         .footer-contact span {
-          line-height: 1.6;
+          line-height: 1.5;
         }
         
         .footer-action-col {
@@ -175,32 +177,31 @@ export default function Footer() {
         }
         .top-btn {
           font-size: 0.85rem;
-          padding: 12px 24px;
+          padding: 10px 20px;
         }
         
         /* Bottom Copyright row */
         .footer-bottom {
-          border-top: 1px solid var(--border-color-dark);
-          padding-top: 32px;
-          font-size: 0.75rem;
-          color: var(--text-muted);
-          font-weight: 700;
-          letter-spacing: 0.1em;
+          border-top: 1px solid rgba(255, 255, 255, 0.1);
+          padding-top: 24px;
+          font-size: 0.8rem;
         }
         .bottom-container {
           display: flex;
           justify-content: space-between;
           flex-wrap: wrap;
-          gap: 16px;
+          gap: 12px;
         }
         .legacy-text {
-          color: var(--primary-accent);
+          color: var(--clr-gold-light);
+          font-style: italic;
+          font-family: var(--font-heading);
+          font-size: 0.9rem;
         }
 
-        @media (max-width: 1024px) {
+        @media (max-width: 900px) {
           .footer-container {
             grid-template-columns: 1fr 1fr;
-            gap: 48px;
           }
           .footer-action-col {
             justify-content: flex-start;
@@ -209,6 +210,7 @@ export default function Footer() {
         @media (max-width: 600px) {
           .footer-container {
             grid-template-columns: 1fr;
+            gap: 40px;
           }
           .bottom-container {
             flex-direction: column;
