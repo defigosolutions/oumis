@@ -25,108 +25,90 @@ export default function Contact() {
     <section className="contact section" id="contact">
       <div className="container">
 
-        <div className="section-title-wrapper">
-          <span className="section-subtitle">Find Us</span>
-          <h2 className="section-title text-gradient">Location & Operating Hours</h2>
-          <p className="contact-intro">
-            We are located in the Stop & Shop Plaza on Dixwell Avenue in Hamden, Connecticut. Drop by or reach out directly.
-          </p>
+        <div className="section-title-wrapper center">
+          <span className="section-subtitle">FIND US</span>
+          <h2 className="section-title">LOCATION & HOURS</h2>
         </div>
 
         <div className="contact-grid">
           {/* Column 1: Info Cards */}
           <div className="contact-info-panel">
             {/* Hours card */}
-            <div className="info-card bg-glass">
+            <div className="info-card">
               <div className="info-icon-wrapper">
-                <Clock className="text-gold" size={24} />
+                <Clock className="text-accent" size={24} />
               </div>
               <div className="info-text">
-                <h3>Opening Hours</h3>
+                <h3>HOURS</h3>
                 <div className="hours-row">
-                  <span>Mon - Sat</span>
+                  <span>MON - SAT</span>
                   <strong>9:00 AM - 5:00 PM</strong>
                 </div>
                 <div className="hours-row">
-                  <span>Sunday</span>
-                  <strong>By Appointment</strong>
+                  <span>SUNDAY</span>
+                  <strong>BY APPOINTMENT</strong>
                 </div>
               </div>
             </div>
 
             {/* Address card */}
-            <div className="info-card bg-glass">
+            <div className="info-card">
               <div className="info-icon-wrapper">
-                <MapPin className="text-gold" size={24} />
+                <MapPin className="text-accent" size={24} />
               </div>
               <div className="info-text">
-                <h3>Our Location</h3>
-                <p>1245 Dixwell Avenue</p>
-                <p>Hamden, CT 06514</p>
-                <span className="info-subtext">(Stop & Shop Plaza)</span>
+                <h3>LOCATION</h3>
+                <p>1245 DIXWELL AVENUE</p>
+                <p>HAMDEN, CT 06514</p>
+                <span className="info-subtext">(STOP & SHOP PLAZA)</span>
               </div>
             </div>
 
             {/* Call card */}
-            <div className="info-card bg-glass">
+            <div className="info-card">
               <div className="info-icon-wrapper">
-                <Phone className="text-gold" size={24} />
+                <Phone className="text-accent" size={24} />
               </div>
               <div className="info-text">
-                <h3>Phone & Contact</h3>
-                <p><a href="tel:2037763381">203-776-3381</a></p>
-                <p><a href="tel:2034070474">203-407-0474</a></p>
-                <p className="email-link"><a href="mailto:oumidiop@hairbraidinghaven.com"><Mail size={14} style={{display:'inline', marginRight: 4, verticalAlign:'middle'}} /> oumidiop@hairbraidinghaven.com</a></p>
+                <h3>CONTACT</h3>
+                <p><a href="tel:2037763381">203.776.3381</a></p>
+                <p><a href="tel:2034070474">203.407.0474</a></p>
+                <p className="email-link"><a href="mailto:oumidiop@hairbraidinghaven.com">OUMIDIOP@HAIRBRAIDINGHAVEN.COM</a></p>
               </div>
             </div>
 
             {/* Amenities */}
-            <div className="amenities-row bg-glass">
+            <div className="amenities-row">
               <div className="amenity-item">
-                <Wifi size={18} className="text-gold" />
-                <span>Free WiFi</span>
+                <Wifi size={18} className="text-accent" />
+                <span>FREE WIFI</span>
               </div>
               <div className="amenity-item">
-                <Car size={18} className="text-gold" />
-                <span>Free Parking</span>
+                <Car size={18} className="text-accent" />
+                <span>FREE PARKING</span>
               </div>
               <div className="amenity-item">
-                <Accessibility size={18} className="text-gold" />
-                <span>Wheelchair Access</span>
+                <Accessibility size={18} className="text-accent" />
+                <span>ACCESSIBLE</span>
               </div>
             </div>
           </div>
 
-          {/* Column 2: Map Visual & Messaging Form */}
+          {/* Column 2: Messaging Form */}
           <div className="contact-interactive-panel">
-            {/* Mock Map Frame */}
-            <div className="map-frame bg-glass">
-              <div className="map-placeholder">
-                <div className="map-grid-overlay"></div>
-                <div className="map-pin-pulse"></div>
-                <div className="map-pin">
-                  <MapPin size={24} fill="#cfa851" color="#1e1510" />
-                </div>
-                <div className="map-label bg-glass">
-                  <strong>Oumi's Haven</strong>
-                  <span>Stop & Shop Plaza, Hamden</span>
-                </div>
-              </div>
-            </div>
-
             {/* Inquiry Form */}
-            <div className="contact-form-container bg-glass">
-              <h3>Send a Quick Inquiry</h3>
+            <div className="contact-form-container">
+              <h3>SEND INQUIRY</h3>
               {submitted ? (
                 <div className="contact-success">
-                  <p>Thank you! Your message has been sent. We'll reply within 24 hours.</p>
+                  <p>THANK YOU. YOUR MESSAGE HAS BEEN SENT.</p>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="contact-form">
                   <div className="form-group-row">
                     <input 
                       type="text" 
-                      placeholder="Your Name" 
+                      placeholder="NAME" 
                       value={formData.name}
                       onChange={(e) => setFormData({...formData, name: e.target.value})}
                       required
@@ -134,7 +116,7 @@ export default function Contact() {
                     />
                     <input 
                       type="email" 
-                      placeholder="Your Email" 
+                      placeholder="EMAIL" 
                       value={formData.email}
                       onChange={(e) => setFormData({...formData, email: e.target.value})}
                       required
@@ -142,7 +124,7 @@ export default function Contact() {
                     />
                   </div>
                   <textarea 
-                    placeholder="Describe the style you want, date queries, or ask any question..." 
+                    placeholder="MESSAGE..." 
                     rows="4"
                     value={formData.message}
                     onChange={(e) => setFormData({...formData, message: e.target.value})}
@@ -150,7 +132,7 @@ export default function Contact() {
                     className="contact-textarea"
                   />
                   <button type="submit" className="btn btn-primary contact-submit">
-                    Send Message <Send size={16} />
+                    SEND MESSAGE <Send size={16} />
                   </button>
                 </form>
               )}
@@ -162,230 +144,166 @@ export default function Contact() {
 
       <style>{`
         .contact {
-          background-color: var(--bg-surface);
-          border-top: 1px solid var(--border-color-light);
-        }
-        .contact-intro {
-          color: var(--text-muted);
-          max-width: 600px;
-          margin: 12px auto 0;
-          font-size: 1rem;
+          background-color: var(--bg-white);
         }
         
         .contact-grid {
           display: grid;
-          grid-template-columns: 0.9fr 1.1fr;
-          gap: 32px;
+          grid-template-columns: 1fr 1fr;
+          gap: 64px;
           align-items: start;
-          margin-top: 24px;
         }
         
         /* Info Cards */
         .contact-info-panel {
           display: flex;
           flex-direction: column;
-          gap: 20px;
+          gap: 0;
+          border-top: 2px solid var(--text-dark);
         }
         .info-card {
           display: flex;
-          align-items: center;
-          gap: 20px;
-          padding: 24px;
-          border-radius: 16px;
+          align-items: flex-start;
+          gap: 24px;
+          padding: 32px 0;
           text-align: left;
+          border-bottom: 1px solid var(--border-color-dark);
         }
         .info-icon-wrapper {
-          width: 50px;
-          height: 50px;
-          border-radius: 50%;
-          background: var(--accent-gold-soft);
-          border: 1px solid var(--border-color);
           display: flex;
           align-items: center;
           justify-content: center;
           flex-shrink: 0;
+          margin-top: 4px;
+        }
+        .info-text {
+          width: 100%;
         }
         .info-text h3 {
-          font-size: 1.1rem;
-          color: var(--text-light);
-          margin-bottom: 6px;
-          font-weight: 700;
+          font-size: 1.25rem;
+          color: var(--text-dark);
+          margin-bottom: 16px;
+          font-weight: 900;
+          letter-spacing: 0.05em;
         }
         .info-text p {
           color: var(--text-muted);
           font-size: 0.95rem;
+          font-weight: 700;
+          letter-spacing: 0.05em;
+          margin-bottom: 4px;
         }
         .info-subtext {
           font-size: 0.8rem;
-          color: var(--primary-gold);
-          font-weight: 600;
+          color: var(--primary-accent);
+          font-weight: 700;
+          letter-spacing: 0.05em;
         }
         .hours-row {
           display: flex;
           gap: 24px;
           justify-content: space-between;
           font-size: 0.95rem;
-          margin-bottom: 4px;
+          margin-bottom: 8px;
           color: var(--text-muted);
+          font-weight: 700;
+          letter-spacing: 0.05em;
         }
         .hours-row strong {
-          color: var(--text-light);
+          color: var(--text-dark);
         }
         .email-link {
-          margin-top: 4px;
-          font-size: 0.9rem;
+          margin-top: 12px;
         }
         .email-link a {
-          color: var(--primary-gold);
+          color: var(--text-dark);
+          text-decoration: underline;
         }
         .email-link a:hover {
-          color: var(--primary-gold-hover);
+          color: var(--primary-accent);
         }
         
         .amenities-row {
           display: flex;
-          justify-content: space-around;
-          padding: 20px;
-          border-radius: 16px;
+          justify-content: space-between;
+          padding: 32px 0;
+          border-bottom: 1px solid var(--border-color-dark);
         }
         .amenity-item {
           display: flex;
           flex-direction: column;
           align-items: center;
-          gap: 6px;
-          font-size: 0.8rem;
-          color: var(--text-muted);
-          font-weight: 500;
+          gap: 8px;
+          font-size: 0.75rem;
+          color: var(--text-dark);
+          font-weight: 700;
+          letter-spacing: 0.1em;
         }
         
-        /* Map and Form */
+        /* Contact Form */
         .contact-interactive-panel {
           display: flex;
           flex-direction: column;
           gap: 24px;
+          border-top: 2px solid var(--text-dark);
+          padding-top: 32px;
         }
-        .map-frame {
-          border-radius: 20px;
-          padding: 10px;
-          overflow: hidden;
-          box-shadow: var(--shadow-md);
-        }
-        
-        /* Mock Map Visual */
-        .map-placeholder {
-          height: 240px;
-          background: #1e1713;
-          border-radius: 14px;
-          position: relative;
-          overflow: hidden;
-        }
-        .map-grid-overlay {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background-image: 
-            radial-gradient(var(--border-color-light) 1px, transparent 1px),
-            linear-gradient(rgba(207, 168, 81, 0.03) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(207, 168, 81, 0.03) 1px, transparent 1px);
-          background-size: 16px 16px, 32px 32px, 32px 32px;
-        }
-        .map-pin {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -100%);
-          z-index: 5;
-        }
-        .map-pin-pulse {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          width: 32px;
-          height: 32px;
-          background: var(--primary-gold);
-          border-radius: 50%;
-          opacity: 0.3;
-          animation: pulse-ring 2s infinite;
-        }
-        @keyframes pulse-ring {
-          0% { transform: translate(-50%, -50%) scale(0.5); opacity: 0.5; }
-          100% { transform: translate(-50%, -50%) scale(2.2); opacity: 0; }
-        }
-        .map-label {
-          position: absolute;
-          bottom: 16px;
-          left: 50%;
-          transform: translateX(-50%);
-          padding: 8px 16px;
-          border-radius: 8px;
-          display: flex;
-          flex-direction: column;
-          font-size: 0.8rem;
-          min-width: 180px;
-          text-align: center;
-          box-shadow: var(--shadow-sm);
-        }
-        .map-label strong {
-          color: var(--primary-gold);
-        }
-        
-        /* Contact Form */
         .contact-form-container {
-          border-radius: 20px;
-          padding: 28px;
           text-align: left;
-          box-shadow: var(--shadow-md);
         }
         .contact-form-container h3 {
           font-size: 1.25rem;
-          margin-bottom: 20px;
-          font-weight: 700;
+          margin-bottom: 32px;
+          font-weight: 900;
+          letter-spacing: 0.05em;
         }
         .contact-form {
           display: flex;
           flex-direction: column;
-          gap: 16px;
+          gap: 24px;
         }
         .form-group-row {
           display: grid;
           grid-template-columns: 1fr 1fr;
-          gap: 16px;
+          gap: 24px;
         }
         .contact-input, .contact-textarea {
-          background: var(--bg-deep);
-          border: 1px solid var(--border-color-light);
-          color: var(--text-light);
-          padding: 12px;
-          border-radius: 8px;
+          background: transparent;
+          border: none;
+          border-bottom: 1px solid var(--border-color-dark);
+          color: var(--text-dark);
+          padding: 12px 0;
           outline: none;
           font-size: 0.95rem;
           width: 100%;
+          font-weight: 700;
+          letter-spacing: 0.05em;
+          border-radius: 0;
         }
         .contact-input:focus, .contact-textarea:focus {
-          border-color: var(--primary-gold);
+          border-bottom-color: var(--primary-accent);
         }
         .contact-textarea {
           resize: vertical;
+          min-height: 120px;
         }
         .contact-submit {
           align-self: flex-start;
-          padding: 12px 24px;
+          margin-top: 16px;
         }
         .contact-success {
-          background: rgba(96, 165, 250, 0.1);
           border: 1px solid var(--success);
-          color: var(--text-light);
-          padding: 16px;
-          border-radius: 8px;
+          color: var(--text-dark);
+          padding: 24px;
           font-size: 0.95rem;
+          font-weight: 700;
+          letter-spacing: 0.05em;
         }
 
         @media (max-width: 900px) {
           .contact-grid {
             grid-template-columns: 1fr;
+            gap: 48px;
           }
           .form-group-row {
             grid-template-columns: 1fr;

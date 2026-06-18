@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Sparkles, Phone } from 'lucide-react';
+import { Menu, X, Phone } from 'lucide-react';
 
 export default function Navbar({ onBookOpen }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,27 +18,24 @@ export default function Navbar({ onBookOpen }) {
   }, []);
 
   return (
-    <nav className={`nav bg-glass ${scrolled ? 'nav-scrolled' : ''}`}>
+    <nav className={`nav ${scrolled ? 'nav-scrolled bg-glass' : ''}`}>
       <div className="container nav-container">
         {/* Logo */}
         <a href="#" className="nav-logo">
-          <Sparkles className="logo-icon text-gold" size={24} />
-          <span className="logo-text">
-            OUMI'S <span className="text-gold">HAVEN</span>
-          </span>
+          OUMI'S<span className="text-accent">HAVEN</span>
         </a>
 
         {/* Desktop Menu */}
         <div className="nav-links-desktop">
-          <a href="#services" className="nav-link">Services</a>
-          <a href="#gallery" className="nav-link">Styles Gallery</a>
-          <a href="#reviews" className="nav-link">Reviews</a>
-          <a href="#contact" className="nav-link">Location & Contact</a>
+          <a href="#services" className="nav-link">SERVICES</a>
+          <a href="#gallery" className="nav-link">GALLERY</a>
+          <a href="#reviews" className="nav-link">REVIEWS</a>
+          <a href="#contact" className="nav-link">CONTACT</a>
           <a href="tel:2037763381" className="nav-call">
-            <Phone size={16} /> 203-776-3381
+            <Phone size={14} /> 203.776.3381
           </a>
           <button onClick={onBookOpen} className="btn btn-primary nav-btn">
-            Book Appointment
+            BOOK NOW
           </button>
         </div>
 
@@ -50,15 +47,15 @@ export default function Navbar({ onBookOpen }) {
 
       {/* Mobile Drawer Menu */}
       <div className={`nav-menu-mobile bg-glass ${isOpen ? 'open' : ''}`}>
-        <a href="#services" onClick={() => setIsOpen(false)} className="nav-link-mobile">Services</a>
-        <a href="#gallery" onClick={() => setIsOpen(false)} className="nav-link-mobile">Styles Gallery</a>
-        <a href="#reviews" onClick={() => setIsOpen(false)} className="nav-link-mobile">Reviews</a>
-        <a href="#contact" onClick={() => setIsOpen(false)} className="nav-link-mobile">Location & Contact</a>
+        <a href="#services" onClick={() => setIsOpen(false)} className="nav-link-mobile">SERVICES</a>
+        <a href="#gallery" onClick={() => setIsOpen(false)} className="nav-link-mobile">GALLERY</a>
+        <a href="#reviews" onClick={() => setIsOpen(false)} className="nav-link-mobile">REVIEWS</a>
+        <a href="#contact" onClick={() => setIsOpen(false)} className="nav-link-mobile">CONTACT</a>
         <a href="tel:2037763381" className="nav-call-mobile">
-          <Phone size={18} className="text-gold" /> Call 203-776-3381
+          <Phone size={16} className="text-accent" /> 203.776.3381
         </a>
         <button onClick={() => { setIsOpen(false); onBookOpen(); }} className="btn btn-primary btn-mobile">
-          Book Appointment
+          BOOK NOW
         </button>
       </div>
 
@@ -70,96 +67,78 @@ export default function Navbar({ onBookOpen }) {
           width: 100%;
           z-index: 1000;
           transition: all 0.3s ease;
-          border-bottom: 1px solid var(--border-color-light);
+          border-bottom: 1px solid transparent;
+          background: var(--bg-white);
         }
         .nav-scrolled {
-          background: rgba(14, 11, 9, 0.95);
-          box-shadow: var(--shadow-md);
-          padding: 8px 0;
+          border-bottom: 1px solid var(--border-color-dark);
+          padding: 0;
         }
         .nav-container {
           display: flex;
           align-items: center;
           justify-content: space-between;
-          height: 72px;
+          height: 80px;
         }
         .nav-logo {
           display: flex;
           align-items: center;
-          gap: 10px;
           font-family: var(--font-heading);
-          font-weight: 700;
-          font-size: 1.35rem;
-          letter-spacing: 0.05em;
-        }
-        .logo-icon {
-          animation: spin-slow 8s linear infinite;
-        }
-        @keyframes spin-slow {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
+          font-weight: 900;
+          font-size: 1.5rem;
+          letter-spacing: -0.02em;
+          color: var(--text-dark);
         }
         .nav-links-desktop {
           display: flex;
           align-items: center;
-          gap: 28px;
+          gap: 32px;
         }
         .nav-link {
-          font-size: 0.95rem;
-          font-weight: 500;
-          color: var(--text-muted);
+          font-size: 0.85rem;
+          font-weight: 700;
+          letter-spacing: 0.05em;
+          color: var(--text-dark);
           position: relative;
-          padding: 4px 0;
+          padding: 8px 0;
         }
         .nav-link:hover, .nav-link:focus {
-          color: var(--text-light);
-        }
-        .nav-link::after {
-          content: '';
-          position: absolute;
-          width: 0;
-          height: 2px;
-          bottom: 0;
-          left: 0;
-          background-color: var(--primary-gold);
-          transition: width 0.3s ease;
-        }
-        .nav-link:hover::after {
-          width: 100%;
+          color: var(--primary-accent);
         }
         .nav-call {
           display: flex;
           align-items: center;
           gap: 6px;
-          font-size: 0.95rem;
-          font-weight: 600;
-          color: var(--primary-gold);
+          font-size: 0.85rem;
+          font-weight: 700;
+          color: var(--primary-accent);
+          letter-spacing: 0.05em;
         }
         .nav-call:hover {
-          color: var(--primary-gold-hover);
+          color: var(--primary-accent-hover);
         }
         .nav-btn {
-          padding: 8px 20px;
-          font-size: 0.9rem;
+          padding: 10px 24px;
+          font-size: 0.8rem;
         }
         .nav-toggle {
           display: none;
           background: transparent;
           border: none;
-          color: var(--text-light);
+          color: var(--text-dark);
           cursor: pointer;
         }
         .nav-menu-mobile {
           display: none;
           position: absolute;
-          top: 72px;
+          top: 80px;
           left: 0;
           width: 100%;
-          padding: 24px;
+          padding: 32px 24px;
           flex-direction: column;
-          gap: 20px;
-          border-top: none;
-          border-bottom: 1px solid var(--border-color);
+          gap: 24px;
+          border-top: 1px solid var(--border-color-dark);
+          border-bottom: 1px solid var(--border-color-dark);
           transform: translateY(-150%);
           transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
@@ -167,22 +146,24 @@ export default function Navbar({ onBookOpen }) {
           transform: translateY(0);
         }
         .nav-link-mobile {
-          font-size: 1.1rem;
-          font-weight: 500;
+          font-size: 1.25rem;
+          font-weight: 700;
+          color: var(--text-dark);
           padding: 8px 0;
-          border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+          border-bottom: 1px solid rgba(0, 0, 0, 0.1);
         }
         .nav-call-mobile {
           display: flex;
           align-items: center;
-          gap: 10px;
-          font-size: 1.1rem;
-          font-weight: 600;
-          color: var(--primary-gold);
+          gap: 12px;
+          font-size: 1.25rem;
+          font-weight: 700;
+          color: var(--primary-accent);
         }
         .btn-mobile {
           width: 100%;
-          padding: 14px;
+          padding: 16px;
+          margin-top: 16px;
         }
 
         @media (max-width: 900px) {

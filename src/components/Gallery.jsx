@@ -5,52 +5,52 @@ const GALLERY_ITEMS = [
   {
     id: 1,
     category: 'braids',
-    title: 'Knotless Box Braids',
-    tag: 'Gold Accents',
+    title: 'KNOTLESS BOX',
+    tag: 'EDITORIAL',
     src: '/oumis_style_knotless.png'
   },
   {
     id: 2,
     category: 'twists',
-    title: 'Senegalese Twists',
-    tag: 'Sleek Finish',
+    title: 'SENEGALESE',
+    tag: 'SLEEK',
     src: '/oumis_style_twists.png'
   },
   {
     id: 3,
     category: 'cornrows',
-    title: 'Tribal Stitch Cornrows',
-    tag: 'Scalp Pattern',
+    title: 'STITCH',
+    tag: 'GEOMETRIC',
     src: '/oumis_style_cornrows.png'
   },
   {
     id: 4,
     category: 'braids',
-    title: 'Jumbo Box Braids',
-    tag: 'Classic Volume',
+    title: 'JUMBO',
+    tag: 'VOLUME',
     src: '/oumis_hero_braids.png'
   },
   {
     id: 5,
     category: 'cornrows',
-    title: 'Feed-In Goddess Cornrows',
-    tag: 'Tapered Feed-In',
-    src: '/oumis_style_cornrows.png' /* Reused with styling */
+    title: 'FEED-IN',
+    tag: 'TAPER',
+    src: '/oumis_style_cornrows.png' 
   },
   {
     id: 6,
     category: 'twists',
-    title: 'Boho Passion Twists',
-    tag: 'Curly Ends',
-    src: '/oumis_style_twists.png' /* Reused with styling */
+    title: 'BOHO',
+    tag: 'TEXTURE',
+    src: '/oumis_style_twists.png' 
   }
 ];
 
 const FILTER_TABS = [
-  { id: 'all', label: 'All Styles' },
-  { id: 'braids', label: 'Box & Knotless' },
-  { id: 'cornrows', label: 'Cornrows' },
-  { id: 'twists', label: 'Twists' },
+  { id: 'all', label: 'ALL STYLES' },
+  { id: 'braids', label: 'BRAIDS' },
+  { id: 'cornrows', label: 'CORNROWS' },
+  { id: 'twists', label: 'TWISTS' },
 ];
 
 export default function Gallery() {
@@ -65,16 +65,13 @@ export default function Gallery() {
     <section className="gallery section" id="gallery">
       <div className="container">
 
-        <div className="section-title-wrapper">
-          <span className="section-subtitle">Inspiration</span>
-          <h2 className="section-title text-gradient">Our Signature Styles</h2>
-          <p className="gallery-intro">
-            Browse through some of our recent creations. Each style is customized to fit our client's unique hair texture and preference.
-          </p>
+        <div className="section-title-wrapper center">
+          <span className="section-subtitle">PORTFOLIO</span>
+          <h2 className="section-title">THE LOOKBOOK</h2>
         </div>
 
         {/* Gallery Filter Tab */}
-        <div className="gallery-filters bg-glass">
+        <div className="gallery-filters">
           {FILTER_TABS.map(tab => (
             <button
               key={tab.id}
@@ -101,12 +98,12 @@ export default function Gallery() {
                 loading="lazy"
               />
               <div className="gallery-item-overlay">
-                <div className="zoom-icon-wrapper">
-                  <ZoomIn size={20} className="text-gold" />
-                </div>
                 <div className="gallery-item-text">
                   <span className="item-tag">{item.tag}</span>
                   <h4 className="item-title">{item.title}</h4>
+                </div>
+                <div className="zoom-icon-wrapper">
+                  <ZoomIn size={24} className="text-light" />
                 </div>
               </div>
             </div>
@@ -117,17 +114,17 @@ export default function Gallery() {
         {activeImage && (
           <div className="lightbox-modal" onClick={() => setActiveImage(null)}>
             <button className="lightbox-close" onClick={() => setActiveImage(null)}>
-              <X size={28} />
+              <X size={32} />
             </button>
-            <div className="lightbox-content bg-glass" onClick={(e) => e.stopPropagation()}>
+            <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>
               <img 
                 src={activeImage.src} 
                 alt={activeImage.title} 
                 className="lightbox-img"
               />
               <div className="lightbox-caption">
+                <h3 className="lightbox-title">{activeImage.title}</h3>
                 <span className="lightbox-tag">{activeImage.tag}</span>
-                <h3 className="lightbox-title text-gold">{activeImage.title}</h3>
               </div>
             </div>
           </div>
@@ -138,120 +135,96 @@ export default function Gallery() {
       <style>{`
         .gallery {
           background-color: var(--bg-surface);
-          border-top: 1px solid var(--border-color-light);
-          border-bottom: 1px solid var(--border-color-light);
-        }
-        .gallery-intro {
-          color: var(--text-muted);
-          max-width: 600px;
-          margin: 12px auto 0;
-          font-size: 1rem;
+          border-top: 1px solid var(--border-color-dark);
+          border-bottom: 1px solid var(--border-color-dark);
         }
         .gallery-filters {
           display: flex;
           justify-content: center;
-          gap: 8px;
-          padding: 8px;
-          border-radius: 12px;
-          margin-bottom: 40px;
-          max-width: 540px;
-          margin-left: auto;
-          margin-right: auto;
+          gap: 24px;
+          margin-bottom: 64px;
         }
         .filter-btn {
           background: transparent;
           border: none;
           color: var(--text-muted);
-          padding: 8px 16px;
-          border-radius: 8px;
-          font-weight: 500;
+          padding: 8px 0;
+          font-weight: 700;
           cursor: pointer;
           transition: all 0.2s ease;
-          font-size: 0.85rem;
+          font-size: 0.95rem;
+          letter-spacing: 0.05em;
+          border-bottom: 2px solid transparent;
         }
         .filter-btn:hover {
-          color: var(--text-light);
-          background: rgba(255, 255, 255, 0.03);
+          color: var(--text-dark);
         }
         .filter-btn.active {
-          background: var(--primary-gold);
-          color: var(--text-dark);
-          font-weight: 600;
+          color: var(--primary-accent);
+          border-bottom-color: var(--primary-accent);
         }
         
         .gallery-grid {
           display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-          gap: 24px;
+          grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+          gap: 32px;
         }
         .gallery-item-wrapper {
           position: relative;
-          border-radius: 16px;
           overflow: hidden;
-          aspect-ratio: 1 / 1;
+          aspect-ratio: 3 / 4;
           cursor: pointer;
-          border: 1px solid var(--border-color-light);
-          box-shadow: var(--shadow-sm);
-          transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .gallery-item-wrapper:hover {
-          transform: scale(1.03);
-          border-color: var(--primary-gold);
+          background: var(--bg-deep);
         }
         .gallery-img {
           width: 100%;
           height: 100%;
           object-fit: cover;
-          transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+          filter: grayscale(100%);
+          transition: filter 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .gallery-item-wrapper:hover .gallery-img {
-          transform: scale(1.08);
+          filter: grayscale(0%);
+          transform: scale(1.05);
         }
         .gallery-item-overlay {
           position: absolute;
-          top: 0;
+          bottom: 0;
           left: 0;
           width: 100%;
-          height: 100%;
-          background: linear-gradient(to top, rgba(14, 11, 9, 0.9) 10%, rgba(14, 11, 9, 0.2) 60%, transparent 100%);
+          padding: 32px;
+          background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 100%);
           display: flex;
-          flex-direction: column;
           justify-content: space-between;
-          padding: 24px;
+          align-items: flex-end;
           opacity: 0;
-          transition: opacity 0.3s ease;
+          transform: translateY(20px);
+          transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .gallery-item-wrapper:hover .gallery-item-overlay {
           opacity: 1;
-        }
-        .zoom-icon-wrapper {
-          align-self: flex-end;
-          background: var(--accent-gold-soft);
-          border: 1px solid var(--border-color);
-          width: 38px;
-          height: 38px;
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          backdrop-filter: blur(4px);
+          transform: translateY(0);
         }
         .gallery-item-text {
           text-align: left;
         }
         .item-tag {
           font-size: 0.75rem;
-          color: var(--primary-gold);
-          text-transform: uppercase;
-          letter-spacing: 0.05em;
-          font-weight: 600;
+          color: var(--primary-accent);
+          letter-spacing: 0.1em;
+          font-weight: 700;
           display: block;
-          margin-bottom: 2px;
+          margin-bottom: 8px;
         }
         .item-title {
-          font-size: 1.15rem;
+          font-size: 1.5rem;
           color: var(--text-light);
-          font-weight: 700;
+          font-family: var(--font-heading);
+          font-weight: 900;
+          letter-spacing: 0.02em;
+        }
+        .zoom-icon-wrapper {
+          margin-bottom: 4px;
         }
 
         /* Lightbox modal styles */
@@ -261,39 +234,31 @@ export default function Gallery() {
           left: 0;
           width: 100%;
           height: 100%;
-          background: rgba(8, 6, 5, 0.95);
+          background: rgba(0, 0, 0, 0.98);
           z-index: 2000;
           display: flex;
           align-items: center;
           justify-content: center;
-          padding: 24px;
-          animation: fadeIn 0.25s ease-out;
+          padding: 40px;
+          animation: fadeIn 0.3s ease-out;
         }
         .lightbox-close {
           position: absolute;
-          top: 24px;
-          right: 24px;
+          top: 40px;
+          right: 40px;
           background: transparent;
           border: none;
           color: var(--text-light);
           cursor: pointer;
-          transition: transform 0.2s ease;
+          transition: color 0.2s ease;
         }
         .lightbox-close:hover {
-          transform: scale(1.1);
-          color: var(--primary-gold);
+          color: var(--primary-accent);
         }
         .lightbox-content {
-          max-width: 540px;
+          max-width: 600px;
           width: 100%;
-          border-radius: 20px;
-          overflow: hidden;
-          box-shadow: var(--shadow-lg);
-          animation: scaleUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        @keyframes scaleUp {
-          from { transform: scale(0.92); opacity: 0; }
-          to { transform: scale(1); opacity: 1; }
+          background: var(--bg-deep);
         }
         .lightbox-img {
           width: 100%;
@@ -302,31 +267,38 @@ export default function Gallery() {
           display: block;
         }
         .lightbox-caption {
-          padding: 20px 24px;
-          text-align: left;
-          background: var(--bg-surface);
-          border-top: 1px solid var(--border-color-light);
-        }
-        .lightbox-tag {
-          font-size: 0.75rem;
-          color: var(--primary-gold);
-          text-transform: uppercase;
-          letter-spacing: 0.05em;
-          font-weight: 600;
-          display: block;
-          margin-bottom: 2px;
+          padding: 24px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
         .lightbox-title {
-          font-size: 1.25rem;
+          font-size: 1.5rem;
+          font-weight: 900;
+          color: var(--text-light);
+        }
+        .lightbox-tag {
+          font-size: 0.85rem;
+          color: var(--primary-accent);
+          letter-spacing: 0.1em;
           font-weight: 700;
         }
 
-        @media (max-width: 600px) {
-          .lightbox-content {
-            border-radius: 12px;
+        @media (max-width: 768px) {
+          .gallery-grid {
+            grid-template-columns: 1fr;
           }
-          .lightbox-caption {
+          .gallery-filters {
+            flex-wrap: wrap;
+            gap: 16px;
+          }
+          .lightbox-modal {
             padding: 16px;
+          }
+          .lightbox-close {
+            top: 16px;
+            right: 16px;
           }
         }
       `}</style>

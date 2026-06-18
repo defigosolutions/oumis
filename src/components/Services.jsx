@@ -1,79 +1,79 @@
 import React, { useState } from 'react';
-import { Clock, Tag, ArrowUpRight, HelpCircle } from 'lucide-react';
+import { Clock, Tag, ArrowRight, Info } from 'lucide-react';
 
 const SERVICES_DATA = [
   {
     id: 'box-braids',
     category: 'braids',
-    name: 'Classic Box Braids',
-    price: '$160',
-    duration: '4 - 6 hrs',
-    description: 'Traditional individual plaits with premium extensions. Extremely durable and versatile. Available in small, medium, or large sizes.',
+    name: 'CLASSIC BOX BRAIDS',
+    price: '$160+',
+    duration: '4-6 HRS',
+    description: 'Traditional individual plaits with premium extensions. Extremely durable and versatile.',
   },
   {
     id: 'knotless-braids',
     category: 'braids',
-    name: 'Knotless Box Braids',
-    price: '$180',
-    duration: '5 - 7 hrs',
-    description: 'A modern, scalp-friendly technique starting with your natural hair. Relieves scalp tension and offers a highly natural lay.',
+    name: 'KNOTLESS BOX BRAIDS',
+    price: '$180+',
+    duration: '5-7 HRS',
+    description: 'A modern, scalp-friendly technique starting with your natural hair. Relieves tension.',
   },
   {
     id: 'cornrows-feedin',
     category: 'cornrows',
-    name: 'Feed-In Cornrows (6-8 Braids)',
-    price: '$90',
-    duration: '2 - 3 hrs',
-    description: 'Premium cornrows where hair extensions are added gradually to create a seamless, tapered, natural look.',
+    name: 'FEED-IN CORNROWS (6-8)',
+    price: '$90+',
+    duration: '2-3 HRS',
+    description: 'Premium cornrows where hair extensions are added gradually for a seamless taper.',
   },
   {
     id: 'stitch-braids',
     category: 'cornrows',
-    name: 'Stitch Braids',
-    price: '$110',
-    duration: '2 - 4 hrs',
-    description: 'Precision parted cornrows featuring the signature stitch design. Clean lines and stunning geometric patterns.',
+    name: 'STITCH BRAIDS',
+    price: '$110+',
+    duration: '2-4 HRS',
+    description: 'Precision parted cornrows featuring the signature stitch design. Clean, geometric lines.',
   },
   {
     id: 'senegalese-twists',
     category: 'twists',
-    name: 'Senegalese Twists',
-    price: '$150',
-    duration: '4 - 5 hrs',
-    description: 'Beautiful, sleek two-strand twists using high-quality kanekalon hair extensions. Offers a soft, elegant look.',
+    name: 'SENEGALESE TWISTS',
+    price: '$150+',
+    duration: '4-5 HRS',
+    description: 'Beautiful, sleek two-strand twists using high-quality kanekalon hair extensions.',
   },
   {
     id: 'passion-twists',
     category: 'twists',
-    name: 'Passion Twists',
-    price: '$140',
-    duration: '3 - 4 hrs',
-    description: 'Fluffy, boho-chic two-strand twists using wavy water wave hair extensions. Lightweight and natural-looking.',
+    name: 'PASSION TWISTS',
+    price: '$140+',
+    duration: '3-4 HRS',
+    description: 'Fluffy, boho-chic two-strand twists using wavy water wave hair extensions.',
   },
   {
     id: 'full-sewin-weave',
     category: 'weaves',
-    name: 'Full Sew-In Weave',
-    price: '$180',
-    duration: '3 - 4 hrs',
-    description: 'Complete braided foundation with hair extensions sewn in securely. Includes custom cut and basic blend styling.',
+    name: 'FULL SEW-IN WEAVE',
+    price: '$180+',
+    duration: '3-4 HRS',
+    description: 'Complete braided foundation with extensions sewn securely. Includes custom cut.',
   },
   {
     id: 'closure-weave',
     category: 'weaves',
-    name: 'Lace Closure Weave installation',
-    price: '$200',
-    duration: '3 - 5 hrs',
-    description: 'Premium sew-in weave with a lace closure installation, providing a natural parting space without leave-out.',
+    name: 'LACE CLOSURE WEAVE',
+    price: '$200+',
+    duration: '3-5 HRS',
+    description: 'Premium sew-in weave with a lace closure installation for a natural parting space.',
   }
 ];
 
 const CATEGORIES = [
-  { id: 'all', label: 'All Services' },
-  { id: 'braids', label: 'Box & Knotless Braids' },
-  { id: 'cornrows', label: 'Cornrows & Stich' },
-  { id: 'twists', label: 'Twists & Locs' },
-  { id: 'weaves', label: 'Weaves & Extensions' },
+  { id: 'all', label: 'ALL SERVICES' },
+  { id: 'braids', label: 'BRAIDS' },
+  { id: 'cornrows', label: 'CORNROWS' },
+  { id: 'twists', label: 'TWISTS' },
+  { id: 'weaves', label: 'WEAVES' },
 ];
 
 export default function Services({ onSelectService }) {
@@ -84,19 +84,16 @@ export default function Services({ onSelectService }) {
     : SERVICES_DATA.filter(service => service.category === activeTab);
 
   return (
-    <section className="services section" id="services">
+    <section className="services section bg-dark" id="services">
       <div className="container">
         
         <div className="section-title-wrapper">
-          <span className="section-subtitle">Our Menu</span>
-          <h2 className="section-title text-gradient">Professional Braiding Services</h2>
-          <p className="services-intro">
-            Select a style below. Hair is provided for most braiding services (please confirm color requirements when booking).
-          </p>
+          <span className="section-subtitle">THE MENU</span>
+          <h2 className="section-title">SERVICES</h2>
         </div>
 
         {/* Tab Filters */}
-        <div className="services-tabs bg-glass">
+        <div className="services-tabs">
           {CATEGORIES.map(category => (
             <button
               key={category.id}
@@ -108,59 +105,46 @@ export default function Services({ onSelectService }) {
           ))}
         </div>
 
-        {/* Grid List */}
-        <div className="services-grid">
+        {/* List Layout instead of Grid to look more like an editorial menu */}
+        <div className="services-list">
           {filteredServices.map(service => (
-            <div key={service.id} className="service-card bg-glass">
-              <div className="card-top">
+            <div key={service.id} className="service-row" onClick={() => onSelectService(service)}>
+              <div className="row-left">
                 <h3 className="service-name">{service.name}</h3>
-                <div className="service-price-badge">
-                  <span className="price-label">Starts at</span>
-                  <span className="price-val">{service.price}</span>
+                <p className="service-desc">{service.description}</p>
+                <div className="service-meta">
+                  <span>{service.duration}</span>
+                  <span className="meta-dot">•</span>
+                  <span>PREMIUM EXTENSIONS</span>
                 </div>
               </div>
-
-              <p className="service-desc">{service.description}</p>
-
-              <div className="service-meta">
-                <div className="meta-item">
-                  <Clock size={16} className="text-gold" />
-                  <span>Est: {service.duration}</span>
-                </div>
-                <div className="meta-item">
-                  <Tag size={16} className="text-gold" />
-                  <span>Premium Extensions Included</span>
-                </div>
+              
+              <div className="row-right">
+                <span className="price-val">{service.price}</span>
+                <button className="row-book-btn">
+                  BOOK <ArrowRight size={16} />
+                </button>
               </div>
-
-              <div className="card-divider"></div>
-
-              <button 
-                onClick={() => onSelectService(service)}
-                className="btn btn-secondary card-btn"
-              >
-                Inquire & Book <ArrowUpRight size={16} />
-              </button>
             </div>
           ))}
         </div>
 
         {/* Info box for custom styles */}
-        <div className="custom-style-banner bg-glass">
+        <div className="custom-style-banner">
           <div className="banner-icon-wrapper">
-            <HelpCircle size={28} className="text-gold" />
+            <Info size={28} className="text-accent" />
           </div>
           <div className="banner-text-area">
-            <h4>Looking for a different style?</h4>
+            <h4>CUSTOM STYLES</h4>
             <p>
-              Oumi's specialists can braid any customized pattern, tribal braids, dreadlock re-twists, faux locs, feed-ins, and kids braiding styles. Call us at <strong>(203) 776-3381</strong> with a reference photo for a quick estimate.
+              Looking for something unique? We execute any customized pattern, tribal braids, dreadlock re-twists, faux locs, feed-ins, and kids braiding styles.
             </p>
           </div>
           <button 
             onClick={() => onSelectService({ name: 'Custom Braid Style/Other Inquiry', price: 'Custom Quote', duration: 'Varies' })}
             className="btn btn-primary banner-btn"
           >
-            Custom Quote
+            GET A QUOTE
           </button>
         </div>
 
@@ -168,144 +152,128 @@ export default function Services({ onSelectService }) {
 
       <style>{`
         .services {
-          background-color: #0e0b09;
-        }
-        .services-intro {
-          color: var(--text-muted);
-          max-width: 600px;
-          margin: 12px auto 0;
-          font-size: 1rem;
+          padding-top: 100px;
+          padding-bottom: 100px;
         }
         .services-tabs {
           display: flex;
           flex-wrap: wrap;
-          justify-content: center;
-          gap: 8px;
-          padding: 8px;
-          border-radius: 12px;
-          margin-bottom: 40px;
-          max-width: 860px;
-          margin-left: auto;
-          margin-right: auto;
+          gap: 16px;
+          margin-bottom: 48px;
+          border-bottom: 1px solid var(--border-color);
+          padding-bottom: 16px;
         }
         .tab-btn {
           background: transparent;
           border: none;
           color: var(--text-muted);
-          padding: 10px 20px;
-          border-radius: 8px;
-          font-weight: 500;
+          font-weight: 700;
           cursor: pointer;
           transition: all 0.2s ease;
-          font-size: 0.9rem;
+          font-size: 0.95rem;
+          letter-spacing: 0.05em;
+          padding-bottom: 4px;
+          position: relative;
         }
         .tab-btn:hover {
           color: var(--text-light);
-          background: rgba(255, 255, 255, 0.03);
         }
         .tab-btn.active {
-          background: var(--primary-gold);
-          color: var(--text-dark);
-          font-weight: 600;
+          color: var(--primary-accent);
         }
-        .services-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-          gap: 24px;
-          margin-bottom: 48px;
-        }
-        .service-card {
-          border-radius: 16px;
-          padding: 28px;
+        
+        .services-list {
           display: flex;
           flex-direction: column;
-          align-items: flex-start;
-          text-align: left;
-          transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+          margin-bottom: 64px;
         }
-        .service-card:hover {
-          transform: translateY(-5px);
-          border-color: var(--primary-gold);
-          box-shadow: var(--shadow-gold);
-        }
-        .card-top {
+        .service-row {
           display: flex;
           justify-content: space-between;
-          align-items: flex-start;
-          width: 100%;
-          gap: 16px;
-          margin-bottom: 16px;
+          align-items: center;
+          padding: 32px 0;
+          border-bottom: 1px solid var(--border-color);
+          cursor: pointer;
+          transition: background-color 0.2s ease;
+        }
+        .service-row:hover {
+          background-color: rgba(255, 255, 255, 0.02);
+        }
+        .service-row:hover .service-name {
+          color: var(--primary-accent);
+        }
+        .row-left {
+          flex: 1;
+          padding-right: 48px;
         }
         .service-name {
-          font-size: 1.25rem;
+          font-size: 1.5rem;
           color: var(--text-light);
-          font-weight: 700;
-        }
-        .service-price-badge {
-          display: flex;
-          flex-direction: column;
-          align-items: flex-end;
-        }
-        .price-label {
-          font-size: 0.7rem;
-          color: var(--text-muted);
-          text-transform: uppercase;
-        }
-        .price-val {
-          font-size: 1.35rem;
-          font-weight: 800;
-          color: var(--primary-gold);
-          font-family: var(--font-heading);
+          font-weight: 900;
+          margin-bottom: 8px;
+          transition: color 0.2s ease;
+          letter-spacing: 0.02em;
         }
         .service-desc {
-          font-size: 0.9rem;
+          font-size: 1rem;
           color: var(--text-muted);
-          margin-bottom: 20px;
-          flex-grow: 1;
-          line-height: 1.5;
+          margin-bottom: 16px;
+          max-width: 600px;
         }
         .service-meta {
           display: flex;
-          flex-direction: column;
-          gap: 8px;
-          width: 100%;
-          margin-bottom: 20px;
+          align-items: center;
+          gap: 12px;
+          font-size: 0.75rem;
+          font-weight: 700;
+          color: var(--text-muted);
+          letter-spacing: 0.1em;
         }
-        .meta-item {
+        .meta-dot {
+          color: var(--primary-accent);
+        }
+        
+        .row-right {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+          gap: 16px;
+        }
+        .price-val {
+          font-size: 2rem;
+          font-weight: 900;
+          color: var(--text-light);
+          font-family: var(--font-heading);
+        }
+        .row-book-btn {
           display: flex;
           align-items: center;
           gap: 8px;
+          background: transparent;
+          border: none;
+          color: var(--primary-accent);
+          font-weight: 700;
           font-size: 0.85rem;
-          color: var(--text-muted);
+          cursor: pointer;
+          letter-spacing: 0.05em;
         }
-        .card-divider {
-          width: 100%;
-          height: 1px;
-          background-color: var(--border-color-light);
-          margin-bottom: 20px;
-        }
-        .card-btn {
-          width: 100%;
-          font-size: 0.9rem;
-          padding: 10px 0;
+        .service-row:hover .row-book-btn {
+          text-decoration: underline;
         }
         
         /* Custom Style Banner */
         .custom-style-banner {
           display: flex;
           align-items: center;
-          gap: 24px;
-          padding: 32px;
-          border-radius: 16px;
+          gap: 32px;
+          padding: 48px;
+          border: 1px solid var(--border-color);
           text-align: left;
-          margin-top: 40px;
         }
         .banner-icon-wrapper {
-          background: var(--accent-gold-soft);
+          width: 64px;
+          height: 64px;
           border: 1px solid var(--border-color);
-          width: 56px;
-          height: 56px;
-          border-radius: 50%;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -315,12 +283,12 @@ export default function Services({ onSelectService }) {
           flex-grow: 1;
         }
         .banner-text-area h4 {
-          font-size: 1.2rem;
-          margin-bottom: 6px;
+          font-size: 1.5rem;
+          margin-bottom: 8px;
           color: var(--text-light);
         }
         .banner-text-area p {
-          font-size: 0.95rem;
+          font-size: 1rem;
           color: var(--text-muted);
           line-height: 1.5;
         }
@@ -328,17 +296,28 @@ export default function Services({ onSelectService }) {
           flex-shrink: 0;
         }
 
-        @media (max-width: 900px) {
+        @media (max-width: 768px) {
+          .service-row {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 24px;
+          }
+          .row-left {
+            padding-right: 0;
+          }
+          .row-right {
+            width: 100%;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+          }
           .custom-style-banner {
             flex-direction: column;
+            padding: 32px;
             text-align: center;
-            padding: 24px;
           }
           .banner-btn {
             width: 100%;
-          }
-          .services-grid {
-            grid-template-columns: 1fr;
           }
         }
       `}</style>

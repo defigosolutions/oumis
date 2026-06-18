@@ -1,5 +1,5 @@
 import React from 'react';
-import { Sparkles, ArrowUp, Phone, MapPin } from 'lucide-react';
+import { ArrowUp, Phone, MapPin } from 'lucide-react';
 
 export default function Footer() {
   const scrollToTop = () => {
@@ -7,14 +7,13 @@ export default function Footer() {
   };
 
   return (
-    <footer className="footer bg-glass">
+    <footer className="footer bg-dark">
       <div className="container footer-container">
         
         {/* Brand Info */}
         <div className="footer-brand">
           <a href="#" className="footer-logo">
-            <Sparkles className="logo-icon text-gold" size={20} />
-            <span>OUMI'S <span className="text-gold">HAVEN</span></span>
+            OUMI'S <span className="text-accent">HAVEN</span>
           </a>
           <p className="footer-tagline">
             Specializing in high-end natural hair care, professional African braiding, weaves, and styling. Empowering confidence since 1994.
@@ -31,26 +30,26 @@ export default function Footer() {
 
         {/* Quick Links */}
         <div className="footer-links-col">
-          <h3>Quick Links</h3>
+          <h3>LINKS</h3>
           <ul className="footer-links">
-            <li><a href="#services">Services Menu</a></li>
-            <li><a href="#gallery">Styles Gallery</a></li>
-            <li><a href="#reviews">Client Reviews</a></li>
-            <li><a href="#contact">Location & Hours</a></li>
+            <li><a href="#services">SERVICES MENU</a></li>
+            <li><a href="#gallery">LOOKBOOK</a></li>
+            <li><a href="#reviews">TESTIMONIALS</a></li>
+            <li><a href="#contact">LOCATION & HOURS</a></li>
           </ul>
         </div>
 
         {/* Contact Info column */}
         <div className="footer-links-col">
-          <h3>Visit Us</h3>
+          <h3>VISIT</h3>
           <ul className="footer-contact">
             <li>
-              <MapPin size={16} className="text-gold" />
-              <span>1245 Dixwell Ave, Hamden, CT 06514</span>
+              <MapPin size={16} className="text-accent" />
+              <span>1245 DIXWELL AVE<br/>HAMDEN, CT 06514</span>
             </li>
             <li>
-              <Phone size={16} className="text-gold" />
-              <span>203-776-3381 / 203-407-0474</span>
+              <Phone size={16} className="text-accent" />
+              <span>203.776.3381<br/>203.407.0474</span>
             </li>
           </ul>
         </div>
@@ -58,7 +57,7 @@ export default function Footer() {
         {/* Action Column */}
         <div className="footer-action-col">
           <button onClick={scrollToTop} className="btn btn-secondary top-btn" aria-label="Scroll to top">
-            Back to Top <ArrowUp size={16} />
+            BACK TO TOP <ArrowUp size={16} />
           </button>
         </div>
 
@@ -66,103 +65,107 @@ export default function Footer() {
 
       <div className="footer-bottom">
         <div className="container bottom-container">
-          <p>&copy; {new Date().getFullYear()} Oumi's Haven Hair Braiding. All Rights Reserved.</p>
-          <p className="legacy-text">Diop Family Legacy — Operating in Hamden for over 30 Years.</p>
+          <p>&copy; {new Date().getFullYear()} OUMI'S HAVEN. ALL RIGHTS RESERVED.</p>
+          <p className="legacy-text">DIOP FAMILY LEGACY — EST. 1994</p>
         </div>
       </div>
 
       <style>{`
         .footer {
-          background-color: #080605;
-          padding: 64px 0 24px;
-          border-top: 1px solid var(--border-color);
+          padding: 100px 0 24px;
+          border-top: 2px solid var(--text-dark);
           margin-top: auto;
         }
         .footer-container {
           display: grid;
           grid-template-columns: 1.5fr 1fr 1.2fr 0.8fr;
-          gap: 40px;
+          gap: 64px;
           align-items: start;
           text-align: left;
-          margin-bottom: 48px;
+          margin-bottom: 64px;
         }
         .footer-brand {
           display: flex;
           flex-direction: column;
-          gap: 16px;
+          gap: 24px;
         }
         .footer-logo {
           display: flex;
           align-items: center;
           gap: 8px;
           font-family: var(--font-heading);
-          font-weight: 700;
-          font-size: 1.25rem;
-          letter-spacing: 0.05em;
+          font-weight: 900;
+          font-size: 1.5rem;
+          letter-spacing: -0.02em;
+          color: var(--text-light);
         }
         .footer-tagline {
           font-size: 0.85rem;
           color: var(--text-muted);
           line-height: 1.6;
+          letter-spacing: 0.05em;
         }
         .footer-socials {
           display: flex;
-          gap: 12px;
+          gap: 16px;
         }
         .social-icon {
           display: flex;
           align-items: center;
           justify-content: center;
-          width: 36px;
-          height: 36px;
-          border-radius: 50%;
-          background: var(--bg-surface-light);
-          color: var(--text-muted);
-          border: 1px solid var(--border-color-light);
+          width: 40px;
+          height: 40px;
+          background: transparent;
+          color: var(--text-light);
+          border: 1px solid var(--border-color);
+          transition: all 0.2s ease;
         }
         .social-icon:hover {
-          color: var(--primary-gold);
-          border-color: var(--primary-gold);
-          background: var(--accent-gold-soft);
+          color: var(--bg-deep);
+          border-color: var(--text-light);
+          background: var(--text-light);
         }
         
         .footer-links-col h3 {
-          font-size: 1rem;
+          font-size: 0.85rem;
           text-transform: uppercase;
-          color: var(--text-light);
-          margin-bottom: 20px;
-          letter-spacing: 0.05em;
-          font-weight: 600;
+          color: var(--primary-accent);
+          margin-bottom: 24px;
+          letter-spacing: 0.1em;
+          font-weight: 900;
         }
         .footer-links {
           list-style: none;
           display: flex;
           flex-direction: column;
-          gap: 10px;
+          gap: 16px;
         }
         .footer-links a {
           font-size: 0.85rem;
           color: var(--text-muted);
+          font-weight: 700;
+          letter-spacing: 0.05em;
         }
         .footer-links a:hover {
-          color: var(--primary-gold);
-          padding-left: 4px;
+          color: var(--text-light);
         }
         .footer-contact {
           list-style: none;
           display: flex;
           flex-direction: column;
-          gap: 14px;
+          gap: 24px;
           font-size: 0.85rem;
           color: var(--text-muted);
+          font-weight: 700;
+          letter-spacing: 0.05em;
         }
         .footer-contact li {
           display: flex;
-          gap: 10px;
+          gap: 16px;
           align-items: flex-start;
         }
         .footer-contact span {
-          line-height: 1.4;
+          line-height: 1.6;
         }
         
         .footer-action-col {
@@ -172,30 +175,32 @@ export default function Footer() {
         }
         .top-btn {
           font-size: 0.85rem;
-          padding: 8px 16px;
+          padding: 12px 24px;
         }
         
         /* Bottom Copyright row */
         .footer-bottom {
-          border-top: 1px solid var(--border-color-light);
-          padding-top: 24px;
-          font-size: 0.8rem;
+          border-top: 1px solid var(--border-color-dark);
+          padding-top: 32px;
+          font-size: 0.75rem;
           color: var(--text-muted);
+          font-weight: 700;
+          letter-spacing: 0.1em;
         }
         .bottom-container {
           display: flex;
           justify-content: space-between;
           flex-wrap: wrap;
-          gap: 12px;
+          gap: 16px;
         }
         .legacy-text {
-          color: var(--primary-gold);
-          font-weight: 500;
+          color: var(--primary-accent);
         }
 
-        @media (max-width: 900px) {
+        @media (max-width: 1024px) {
           .footer-container {
             grid-template-columns: 1fr 1fr;
+            gap: 48px;
           }
           .footer-action-col {
             justify-content: flex-start;
@@ -204,7 +209,6 @@ export default function Footer() {
         @media (max-width: 600px) {
           .footer-container {
             grid-template-columns: 1fr;
-            gap: 32px;
           }
           .bottom-container {
             flex-direction: column;
