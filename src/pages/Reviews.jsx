@@ -88,7 +88,7 @@ export default function Reviews() {
                 Leave us a review on Google and help other clients discover Oumi's Haven Hair Braiding!
               </p>
               <a
-                href="https://maps.google.com/?q=Oumi+Hair+Salon+1384+Dixwell+Ave+Hamden+CT"
+                href="https://maps.app.goo.gl/eThWZQjueMfJbwZk7"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn btn-primary reviews-page__cta-btn"

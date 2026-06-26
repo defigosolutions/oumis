@@ -9,7 +9,7 @@ import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import ReviewSlider from '../components/ReviewSlider';
 import RotatingLogoBadge from '../components/RotatingLogoBadge';
 import AnimatedCounter from '../components/AnimatedCounter';
-import { heroImages, featuredImages, previewImages, logoImg, socialBannerImg } from '../images';
+import { heroImages, featuredImages, previewImages, logoImg, socialBannerImg, h2, h15 } from '../images';
 import './Home.css';
 
 const FEATURED_SERVICES = [
@@ -42,13 +42,13 @@ const PRICING = [
 ];
 
 const HOURS = [
-  { day: 'Monday', time: 'Closed' },
-  { day: 'Tuesday', time: '9:00 AM – 6:00 PM' },
-  { day: 'Wednesday', time: '9:00 AM – 6:00 PM' },
-  { day: 'Thursday', time: '9:00 AM – 6:00 PM' },
-  { day: 'Friday', time: '9:00 AM – 6:00 PM' },
-  { day: 'Saturday', time: '9:00 AM – 7:00 PM' },
-  { day: 'Sunday', time: '9:00 AM – 7:00 PM' },
+  { day: 'Monday', time: '10:00 AM – 7:00 PM' },
+  { day: 'Tuesday', time: '10:00 AM – 7:00 PM' },
+  { day: 'Wednesday', time: '10:00 AM – 7:00 PM' },
+  { day: 'Thursday', time: '10:00 AM – 7:00 PM' },
+  { day: 'Friday', time: '10:00 AM – 7:00 PM' },
+  { day: 'Saturday', time: '10:00 AM – 7:00 PM' },
+  { day: 'Sunday', time: '11:00 AM – 7:00 PM' },
 ];
 
 export default function Home() {
@@ -361,7 +361,7 @@ export default function Home() {
         <div className="home__map-wrap fade-up stagger-2">
           <iframe
             title="Oumi's Haven Hair Braiding Location"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2996.3937483898244!2d-72.91720592357437!3d41.39785!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e7d8ecabcde123%3A0x0!2s1384+Dixwell+Ave%2C+Hamden%2C+CT+06514!5e0!3m2!1sen!2sus!4v1716000000000!5m2!1sen!2sus"
+            src="https://www.google.com/maps?q=1245+Dixwell+Ave,+Hamden,+CT+06514&output=embed"
             width="100%"
             height="420"
             style={{ border: 0 }}
@@ -374,7 +374,7 @@ export default function Home() {
               <FaMapMarkerAlt className="home__map-pin" />
               <div>
                 <p className="home__map-address">1245 Dixwell Ave, Hamden, CT 06514</p>
-                <a href="https://maps.google.com/?q=1384+Dixwell+Ave+Hamden+CT" target="_blank" rel="noopener noreferrer" className="home__map-link">
+                <a href="https://maps.app.goo.gl/eThWZQjueMfJbwZk7" target="_blank" rel="noopener noreferrer" className="home__map-link">
                   Get Directions →
                 </a>
               </div>
@@ -460,7 +460,7 @@ export default function Home() {
 
           {/* Right Side: Arched Image */}
           <div className="home__reserve-image-wrap fade-in stagger-2">
-            <img src={heroImages[0]} alt="Salon styling" className="home__reserve-image" loading="lazy" />
+            <img src={h15} alt="Salon styling" className="home__reserve-image" loading="lazy" />
           </div>
         </div>
       </section>

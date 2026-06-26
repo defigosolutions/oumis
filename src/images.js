@@ -1,48 +1,64 @@
 // ============================================================
-// IMAGE REGISTRY – High-quality Unsplash placeholder images
-// organized by salon section and hairstyle type.
+// IMAGE REGISTRY – Local assets from src/assets
 // ============================================================
 
-// ── Logo (kept as local asset) ───────────────────────────────
 import logoSrc from './assets/logo.png';
 export const logoImg = logoSrc;
 
-// ── Unsplash CDN helper ──────────────────────────────────────
-const U = (id, w = 800) => `https://images.unsplash.com/photo-${id}?w=${w}&q=80&auto=format&fit=crop`;
+import img1 from './assets/1.jpg';
+import img2 from './assets/2.jpg';
+import img3 from './assets/3.jpg';
+import img4 from './assets/4.jpg';
+import img5 from './assets/5.jpg';
+import img6 from './assets/6.jpg';
+import img7 from './assets/7.jpg';
+import img8 from './assets/8.jpg';
+import img9 from './assets/9.jpg';
+import img10 from './assets/10.jpg';
+import img11 from './assets/11.jpg';
+import img12 from './assets/12.jpg';
+import img13 from './assets/13.jpg';
+import img14 from './assets/14.jpg';
+import img15 from './assets/15.jpg';
+import heroPng from './assets/hero.png';
+import indoor from './assets/indoor.jpg';
+import indoor1 from './assets/indoor1.jpg';
+import owner from './assets/owner.jpg';
 
 // ── Individual images by style ───────────────────────────────
-// Knotless / box braids / protective styles
-const h1  = U('1617791160536-598cf32026fb');       // beautiful curls & braids
-const h2  = U('1589156280159-27698a70f29e');       // black woman elegant portrait
-const h3  = U('1531746020798-e6953c6e8e04');       // beauty portrait close-up
-const h4  = U('1526510747491-58f928ec870f');       // glamorous hair styling
-const h5  = U('1596178065887-1198b6148b2b');       // woman with styled hair
-const h6  = U('1611432579699-484f7990b127');       // natural hair beauty
-const h7  = U('1602233158242-3ba0ac4d2167');       // black woman gorgeous hair
-const h8  = U('1594744803329-e58b31de8bf5');       // young girl hairstyle
-const h9  = U('1492106087820-71f1a00d2b11');       // beauty & hair portrait
-const h10 = U('1534528741775-53994a69daeb');       // styled woman portrait
-const h11 = U('1580501170888-80668882ca0c');       // hair salon chair
-const h12 = U('1617791160536-598cf32026fb');       // beautiful curls & braids
-const h13 = U('1524504388940-b1c1722653e1');       // glamour hair portrait
-const h14 = U('1549236177-f9b0031756eb');          // confident beauty portrait
-const h15 = U('1595152772835-219674b2a8a6');       // confident stylish woman
-const h16 = U('1507003211169-0a1dd7228f2d');       // natural hair portrait
-const h17 = U('1521590832167-7bcbfaa6381f');       // hair salon styling
-const h18 = U('1560066984-138dadb4c035');          // luxury salon interior
-const h19 = U('1562322140-8baeececf3df');          // salon detail shot
-const h20 = U('1522337360788-8b13dee7a37e');       // salon tools & brushes
-const h21 = U('1527799820374-dcf8d9d4a388');       // salon interior design
-const h22 = U('1559599101-f09722fb4948');          // hairstyle close-up
-const h23 = U('1605497788044-5a32c7078486');       // professional styling
-const h24 = U('1544005313-94ddf0286df2');          // woman portrait clean
-const h25 = U('1580618672591-eb180b1a973f');       // hairdresser at work
-const h26 = U('1600948836101-f9ffda59d250');       // bridal hairstyling
-const h27 = U('1531746020798-e6953c6e8e04');       // braids styling close-up
+export const h1  = img1;
+export const h2  = img2;
+export const h3  = img3;
+export const h4  = img4;
+export const h5  = img5;
+export const h6  = img6;
+export const h7  = img7;
+export const h8  = img8;
+export const h9  = img9;
+export const h10 = img10;
+export const h11 = img11;
+export const h12 = img12;
+export const h13 = img13;
+export const h14 = img14;
+export const h15 = img15;
+export const h16 = heroPng;
+export const h17 = indoor;
+export const h18 = indoor1;
+export const h19 = owner;
+
+// Reuse to fulfill original 27 count
+export const h20 = img1;
+export const h21 = img2;
+export const h22 = img3;
+export const h23 = img4;
+export const h24 = img5;
+export const h25 = img6;
+export const h26 = img7;
+export const h27 = img8;
 
 // ── Hero background ──────────────────────────────────────────
-export const socialBannerImg = U('1560066984-138dadb4c035', 1920); // wide luxury salon interior
-export const seoBannerImg    = U('1521590832167-7bcbfaa6381f', 1200);
+export const socialBannerImg = indoor1;
+export const seoBannerImg    = indoor1;
 
 // ── Gallery images with category tags for filtering ──────────
 export const galleryImages = [

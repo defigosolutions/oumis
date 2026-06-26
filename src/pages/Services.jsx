@@ -88,33 +88,36 @@ const ALL_SERVICES = [
   { id: 52, category: 'Maintenance',       name: 'Braids Remove',                   description: 'Professional and careful removal of existing braids, protecting your natural hair.',                  price: '$50+',         deposit: '$10' },
 ];
 
-const U = (id, w = 600) => `https://images.unsplash.com/photo-${id}?w=${w}&q=80&auto=format&fit=crop`;
+import {
+  h1, h2, h3, h4, h5, h6, h7, h8, h9, h10, h11, h12, h13, h14,
+  h15, h16, h17, h18, h19, h20, h21, h22, h23, h24, h25, h26, h27
+} from '../images';
 
 const SERVICE_IMAGES = {
-  knotless:    U('1589156280159-27698a70f29e'),
-  knotBoho:    U('1526510747491-58f928ec870f'),
-  knotLong:    U('1602233158242-3ba0ac4d2167'),
-  knotSmall:   U('1526510747491-58f928ec870f'),
-  knotHuman:   U('1492106087820-71f1a00d2b11'),
-  box:         U('1531746020798-e6953c6e8e04'),
-  boxMale:     U('1589156280159-27698a70f29e'),
-  boxFancy:    U('1549236177-f9b0031756eb'),
-  cornrow:     U('1611432579699-484f7990b127'),
-  cornStitch:  U('1595152772835-219674b2a8a6'),
-  cornNatural: U('1531746020798-e6953c6e8e04'),
-  twistPassion:U('1596178065887-1198b6148b2b'),
-  twistSenegal:U('1534528741775-53994a69daeb'),
-  twistKinky:  U('1583001308347-c5162515b50c'),
-  twistDefault:U('1544005313-94ddf0286df2'),
-  crochet:     U('1617791160536-598cf32026fb'),
-  locsGoddess: U('1524504388940-b1c1722653e1'),
-  locsButter:  U('1524504388940-b1c1722653e1'),
-  locsFaux:    U('1611432579699-484f7990b127'),
-  locsDefault: U('1617791160536-598cf32026fb'),
-  kidsDefault: U('1594744803329-e58b31de8bf5'),
-  kidsCornrow: U('1559599101-f09722fb4948'),
-  tribal:      U('1595152772835-219674b2a8a6'),
-  fallback:    U('1589156280159-27698a70f29e'),
+  knotless:    h1,
+  knotBoho:    h4,
+  knotLong:    h7,
+  knotSmall:   h19,
+  knotHuman:   h23,
+  box:         h2,
+  boxMale:     h14,
+  boxFancy:    h26,
+  cornrow:     h3,
+  cornStitch:  h11,
+  cornNatural: h27,
+  twistPassion:h5,
+  twistSenegal:h10,
+  twistKinky:  h16,
+  twistDefault:h24,
+  crochet:     h12,
+  locsGoddess: h13,
+  locsButter:  h18,
+  locsFaux:    h6,
+  locsDefault: h25,
+  kidsDefault: h8,
+  kidsCornrow: h22,
+  tribal:      h14,
+  fallback:    h1,
 };
 
 const getServiceImage = (category, name) => {

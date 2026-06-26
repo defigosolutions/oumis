@@ -6,13 +6,13 @@ import ContactForm from '../components/ContactForm';
 import './Contact.css';
 
 const HOURS = [
-  { day: 'Monday',    hours: 'Closed',       closed: true  },
-  { day: 'Tuesday',   hours: '9:00 AM – 6:00 PM', closed: false },
-  { day: 'Wednesday', hours: '9:00 AM – 6:00 PM', closed: false },
-  { day: 'Thursday',  hours: '9:00 AM – 6:00 PM', closed: false },
-  { day: 'Friday',    hours: '9:00 AM – 6:00 PM', closed: false },
-  { day: 'Saturday',  hours: '9:00 AM – 7:00 PM', closed: false },
-  { day: 'Sunday',    hours: '9:00 AM – 7:00 PM', closed: false },
+  { day: 'Monday',    hours: '10:00 AM – 7:00 PM', closed: false },
+  { day: 'Tuesday',   hours: '10:00 AM – 7:00 PM', closed: false },
+  { day: 'Wednesday', hours: '10:00 AM – 7:00 PM', closed: false },
+  { day: 'Thursday',  hours: '10:00 AM – 7:00 PM', closed: false },
+  { day: 'Friday',    hours: '10:00 AM – 7:00 PM', closed: false },
+  { day: 'Saturday',  hours: '10:00 AM – 7:00 PM', closed: false },
+  { day: 'Sunday',    hours: '11:00 AM – 7:00 PM', closed: false },
 ];
 
 const TODAY = new Date().toLocaleDateString('en-US', { weekday: 'long' });
@@ -82,7 +82,7 @@ export default function Contact() {
                     <p className="contact-page__info-value">1245 Dixwell Ave</p>
                     <p className="contact-page__info-value">Hamden, CT 06514</p>
                     <a
-                      href="https://maps.google.com/?q=1384+Dixwell+Ave+Hamden+CT+06514"
+                      href="https://maps.app.goo.gl/eThWZQjueMfJbwZk7"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="contact-page__info-link"
@@ -154,7 +154,7 @@ export default function Contact() {
         <div className="contact-page__map-wrap fade-up stagger-2">
           <iframe
             title="Oumi's Haven Hair Braiding on Google Maps"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2996.394!2d-72.9172!3d41.39785!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e7d8f5a2c3b4d5%3A0x0!2s1384+Dixwell+Ave%2C+Hamden%2C+CT+06514!5e0!3m2!1sen!2sus!4v1716000000000"
+            src="https://www.google.com/maps?q=1245+Dixwell+Ave,+Hamden,+CT+06514&output=embed"
             width="100%"
             height="450"
             style={{ border: 0 }}
