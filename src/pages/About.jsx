@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { FaChevronRight, FaMedal, FaLeaf, FaHandHoldingHeart, FaUsers, FaCoffee, FaStar } from 'react-icons/fa';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import RotatingLogoBadge from '../components/RotatingLogoBadge';
-import { aboutImages, logoImg } from '../images';
+import { aboutImages, logoImg, h19 as ownerImg } from '../images';
 import './About.css';
 
 const WHY_CARDS = [
@@ -146,6 +146,39 @@ export default function About() {
                   <span className="about__stat-label">{label}</span>
                 </div>
               ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── OWNER SECTION ── */}
+      <section className="section about__owner" id="meet-the-owner">
+        <div className="blob blob-purple about__owner-blob" aria-hidden="true" />
+        <div className="container about__owner-inner">
+          <div className="about__owner-image fade-in">
+            <img src={ownerImg} alt="Oumi, Founder and Lead Braider" loading="lazy" />
+            <div className="about__owner-image-backdrop" aria-hidden="true" />
+          </div>
+          <div className="about__owner-text">
+            <span className="section-tag fade-up">Meet the Owner</span>
+            <h2 className="section-title fade-up stagger-1">
+              Hi, I'm <span className="text-gradient-pink">Oumi</span>
+            </h2>
+            <div className="divider divider-left fade-up stagger-2" />
+            <div className="about__owner-paras fade-up stagger-3">
+              <p>
+                As the founder and lead braider at <strong>Oumi's Haven Hair Braiding</strong>, my passion is making every client feel beautiful, confident, and cared for. I have dedicated years to mastering the art of braiding and protective styling.
+              </p>
+              <p>
+                My goal is to create a welcoming environment where you can relax while we work our magic. Whether you are looking for classic cornrows, trendy knotless braids, or intricate boho styles, I ensure that every style is done with precision and a gentle touch.
+              </p>
+              <p>
+                I believe that your hair is your crown. Thank you for trusting me and my team to help you wear it beautifully.
+              </p>
+            </div>
+            <div className="about__owner-sign fade-up stagger-4">
+              <p className="signature">Oumi</p>
+              <span className="role">Founder & Lead Stylist</span>
             </div>
           </div>
         </div>

@@ -108,7 +108,7 @@ export default function Contact() {
                   <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="contact-page__social" aria-label="Instagram">
                     <FaInstagram /> Instagram
                   </a>
-                  <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="contact-page__social" aria-label="Facebook">
+                  <a href="https://www.facebook.com/p/Oumis-Place-Haven-Hair-Braiding-100063511092366/" target="_blank" rel="noopener noreferrer" className="contact-page__social" aria-label="Facebook">
                     <FaFacebookF /> Facebook
                   </a>
                 </div>

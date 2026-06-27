@@ -52,7 +52,7 @@ export default function Footer() {
               <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="footer__social-btn" aria-label="Instagram">
                 <FaInstagram />
               </a>
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="footer__social-btn" aria-label="Facebook">
+              <a href="https://www.facebook.com/p/Oumis-Place-Haven-Hair-Braiding-100063511092366/" target="_blank" rel="noopener noreferrer" className="footer__social-btn" aria-label="Facebook">
                 <FaFacebookF />
               </a>
             </div>
